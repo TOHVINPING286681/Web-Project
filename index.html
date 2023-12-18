@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TradeCycle</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div class="container" id="container">
+    <!-- Sign Up Form -->
+      <div class="form-container sign-up">
+        <form name="registerForm" novalidate onsubmit="return validateForm()">
+            <h1>Create Account</h1>
+            <div class="input-container">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Name" id="name">
+            </div>
+            <div class="input-container">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username"  id="username">
+            </div>
+            <div class="input-container">
+              <i class="fas fa-phone"></i>
+              <input type="tel" placeholder="Contact Number"id="phone" required minlength="10">
+            </div>
+            <div class="input-container">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" id="email"
+              required>
+            </div>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" id="passa" required>
+            </div>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Re-enter Password" id="passb" required>
+            </div>
+            <button type="submit">Sign Up</button>
+            <div class="error-message" id="error-message"></div>
+          </form>
+      </div>
+      <!-- Sign In Form -->
+      <div class="form-container sign-in">
+        <form name="loginForm" novalidate onsubmit="return validateLoginForm()">
+            <h1>Sign In</h1>
+            <span>Welcome back to TradeCycle</span>
+            <div class="input-container">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" id="email_login">
+            </div>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" id="pass_login">
+            </div>
+            <button type="submit">Sign In</button>            
+            <a href="#">Forget Your Password?</a>
+            <div class="error-message" id="login-error-message"></div>
+          </form>
+      </div>
+      <!-- Color tab beside the form -->
+      <div class="toggle-container">
+          <div class="toggle">
+              <div class="toggle-panel toggle-left">
+                  <img src="icons/logo.svg" height="150" width="150">
+                  <h1>TradeCycle</h1>
+                  <p>Successfully register? Log in your account to start your trade!</p>
+                  <button class="hidden" id="login">Sign In</button>
+              </div>
+              <div class="toggle-panel toggle-right">
+                  <img src="icons/logo.svg" height="150" width="150">
+                  <h1>TradeCycle</h1>
+                  <p>New to TradeCycle? Register your account to enjoy your journey!</p>
+                  <button class="hidden" id="register">Sign Up</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
