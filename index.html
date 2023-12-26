@@ -12,50 +12,46 @@
 
   <div class="container" id="container">
     <!-- Sign Up Form -->
-      <div class="form-container sign-up">
-        <form name="registerForm" novalidate onsubmit="return validateForm()">
-            <h1>Create Account</h1>
-            <div class="input-container">
+    <div class="form-container sign-up">
+      <form name="registerForm" action="register.php" method="POST" novalidate onsubmit="return validateForm()">
+          <h1>Create Account</h1>
+          <div class="input-container">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Name" id="name">
-            </div>
-            <div class="input-container">
+              <input type="text" placeholder="Name" id="name" name="name">
+          </div>
+          <div class="input-container">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username"  id="username">
-            </div>
-            <div class="input-container">
+              <input type="text" placeholder="Username" id="username" name="username">
+          </div>
+          <div class="input-container">
               <i class="fas fa-phone"></i>
-              <input type="tel" placeholder="Contact Number"id="phone" required minlength="10">
-            </div>
-            <div class="input-container">
+              <input type="tel" placeholder="Contact Number" id="phone" name="phone" required minlength="10">
+          </div>
+          <div class="input-container">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" id="email"
-              required>
-            </div>
-            <div class="input-container">
+              <input type="email" placeholder="Email" id="email" name="email" required>
+          </div>
+          <div class="input-container">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" id="passa" required>
-            </div>
-            <div class="input-container">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Re-enter Password" id="passb" required>
-            </div>
-            <button type="submit">Sign Up</button>
-            <div class="error-message" id="error-message"></div>
-          </form>
-      </div>
+              <input type="password" placeholder="Password" id="passa" name="passa" required>
+          </div>
+          <!-- ... -->
+          <button type="submit">Sign Up</button>
+          <div class="error-message" id="error-message"></div>
+      </form>
+  </div>
       <!-- Sign In Form -->
       <div class="form-container sign-in">
-        <form name="loginForm" novalidate onsubmit="return validateLoginForm()">
+        <form name="loginForm" action="login.php" method="POST" novalidate onsubmit="return validateLoginForm()">
             <h1>Sign In</h1>
             <span>Welcome back to TradeCycle</span>
             <div class="input-container">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" id="email_login">
+              <input type="email" placeholder="Email" id="email_login" name="email_login">
             </div>
             <div class="input-container">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" id="pass_login">
+              <input type="password" placeholder="Password" id="pass_login" name="pass_login">
             </div>
             <button type="submit">Sign In</button>            
             <a href="#">Forget Your Password?</a>
@@ -80,7 +76,26 @@
           </div>
       </div>
   </div>
+    <script>
+    // Function to get URL parameters
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[[]]/g, "\\$&");
+        const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
+    // Get the 'success' parameter from the URL
+    const successMessage = getParameterByName('success');
+    if (successMessage) {
+        // Display success message (you can customize this)
+        alert(successMessage);
+    }
+    </script>
   <script src="script.js"></script>
+  <script>
+</script>
 </body>
 </html>
