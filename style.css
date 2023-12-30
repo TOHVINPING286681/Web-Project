@@ -328,12 +328,19 @@ header h1{
   border: 1px solid #BCA37F;
   border-radius: 0px;
   cursor: pointer;
-  justify-content: space-between;
   font-size: 17px;
   font-weight: 100;
   margin-top: 20px;
   margin-right: 10px;
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Ensures inline-block behavior */
 }
+
+.add-item-button:hover {
+  background-color: #fff;
+  color: #BCA37F;
+}
+
 
 .user-info {
   display: flex;
