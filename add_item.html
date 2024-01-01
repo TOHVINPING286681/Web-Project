@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new item</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="body-add-item">
+    <header>
+        <div class="logo-container">
+          <img src="icons/logo.svg" height="100" width="100">
+          <h1>TradeCycle</h1>
+        </div>
+        <div class="username-icon-container">
+          <div class="dropdown">
+              <button class="dropbtn">
+                  <p class="username1">Username</p>
+                  <i class="fas fa-user"></i>
+              </button>
+              <div class="dropdown-content">
+                  <a href="user_profile.html">Profile</a>
+                  <a href="#">Logout</a>
+              </div>
+          </div>
+      </div>
+    </header>
+    <main>
+        <div class="add-picture-container">
+            <div class="picture-section" id="picture-section-1">
+                <h2>Add Picture 1</h2>
+                <div class="gallery-container">
+                    <label for="fileInput1" class="upload-box">
+                        <input type="file" id="fileInput1" accept="image/*" multiple>
+                        <p>Upload Image</p>
+                    </label>
+                    <!-- <img src="placeholder.png" alt="Placeholder image"> -->
+                </div>
+            </div>
+            <div class="picture-section" id="picture-section-2">
+                <h2>Add Picture 2</h2>
+                <div class="gallery-container">
+                    <label for="fileInput2" class="upload-box">
+                        <input type="file" id="fileInput2" accept="image/*" multiple>
+                        <p>Upload Image</p>
+                    </label>
+                    <!-- <img src="placeholder.png" alt="Placeholder image"> -->
+                </div>
+            </div>
+            <div class="picture-section" id="picture-section-3">
+                <h2>Add Picture 3</h2>
+                <div class="gallery-container">
+                    <label for="fileInput3" class="upload-box">
+                        <input type="file" id="fileInput3" accept="image/*" multiple>
+                        <p>Upload Image</p>
+                    </label>
+                    <!-- <img src="placeholder.png" alt="Placeholder image"> -->
+                </div>
+            </div>
+        </div>
+        <form name="addItemForm" action="" class="add-item-form">
+            <div class="input-container">
+                <label for="itemName">Item name</label>
+                <input type="text" id="itemName" class="wide-input">
+            </div>
+            <div class="input-container">
+                <label for="category">Category</label>
+                <input type="text" id="category" class="wide-input">
+            </div>
+            <div class="input-container row-container">
+                <div class="input-row">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" class="wide-input">
+                </div>
+                <div class="input-row">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" id="quantity" class="wide-input">
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="description">Description of item</label>
+                <textarea id="description" class="wide-input"></textarea>
+            </div>
+            <div class="input-container location-container">
+                <label for="location">Location</label>
+                <input type="text" id="location">
+                <div class="radio-group">
+                    <label for="pickUp">Pick Up</label>
+                    <input type="radio" id="pickUp" name="location">
+                    <label for="delivery">Delivery</label>
+                    <input type="radio" id="delivery" name="location">
+                </div>
+            </div>
+            <button type="submit" class="add-new-item-button">Add new item</button>
+        </form>
+        
+    </main>
+    
+      <footer>
+        <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+      </footer>
+
+      <script 
+      src="script.js">
+    </script>
+</body>
+
+</html>
