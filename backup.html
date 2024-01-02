@@ -26,114 +26,80 @@
           </div>
       </div>
     </header>
-     <main>
-       <!--  <div class="add-picture-container">
-            <div class="picture-section" id="picture-section-1">
-                <h2>Add Picture 1</h2>
-                <div class="gallery-container">
-                    <label for="fileInput1" class="upload-box">
-                        <input type="file" id="fileInput1" accept="image/*" multiple>
-                        <p>Upload Image</p>
-                    </label> -->
-                    <!-- <img src="placeholder.png" alt="Placeholder image"> -->
-                <!-- </div>
+    <main>
+      
+        <!-- <div class="file-input-container">
+            <div class="input-add-container-file-inputs">
+                <label for="image1">Image 1</label>
+                <input type="file" id="image1" name="image1" accept="image/*" multiple>
             </div>
-            <div class="picture-section" id="picture-section-2">
-                <h2>Add Picture 2</h2>
-                <div class="gallery-container">
-                    <label for="fileInput2" class="upload-box">
-                        <input type="file" id="fileInput2" accept="image/*" multiple>
-                        <p>Upload Image</p>
-                    </label> -->
-                    <!-- <img src="placeholder.png" alt="Placeholder image"> -->
-                <!-- </div>
+            <div class="input-add-container-file-inputs">
+                <label for="image2">Image 2</label>
+                <input type="file" id="image2" name="image2" accept="image/*" multiple>
             </div>
-            <div class="picture-section" id="picture-section-3">
-                <h2>Add Picture 3</h2>
-                <div class="gallery-container">
-                    <label for="fileInput3" class="upload-box">
-                        <input type="file" id="fileInput3" accept="image/*" multiple>
-                        <p>Upload Image</p>
-                    </label> -->
-                    <!-- <img src="placeholder.png" alt="Placeholder image"> -->
-               <!--  </div>
+            <div class="input-add-container-file-inputs">
+                <label for="image3">Image 3</label>
+                <input type="file" id="image3" name="image3" accept="image/*" multiple>
             </div>
         </div> -->
         <form name="addItemForm" action="add_item.php" class="add-item-form" method="POST" enctype="multipart/form-data">
-            <div class="input-add-container">
-                <label for="itemName">Item name</label>
-                <input type="text" id="itemName" class="wide-input">
-            </div>
-            <div class="input-add-container">
-                <label for="category">Category</label>
-                <!-- Add a dropdown button for the category -->
-                <div class="dropdownCategory">
-                    <button class="dropbtnCategory" id="categoryDropdown">Select Category</button>
-                    <div class="dropdownCategory-content">
-                        <a href="#">Accessories</a>
-                        <a href="#">Computer</a>
-                        <a href="#">Women's Fashion</a>
-                        <a href="#">Men's Fashion</a>
-                        <a href="#">Mobile Phone</a>
-                        <a href="#">Beauty & Personal Care</a>
-                        <a href="#">Health & Equipment</a>
-                        <a href="#">Baby & Kids</a>
-                        <a href="#">Pet Supplies</a>
-                        <a href="#">Furniture & Home Living</a>
-                        <a href="#">Gadgets</a>
-                        <a href="#">Photography</a>
-                        <a href="#">Sports Equipment</a>
-                        <a href="#">Books & Stationaries</a>
-                        <a href="#">Toys</a>
-                        <a href="#">Car & Motorbikes Accessories</a>
-                        <a href="#">Home Appliances</a>
-                        <a href="#">Others</a>
-                    </div>
+            <div class="file-input-container">
+                <div class="input-add-container-file-inputs">
+                    <label for="image1">Image 1</label>
+                    <input type="file" id="image1" name="image1" accept="image/*" multiple>
+                </div>
+                <div class="input-add-container-file-inputs">
+                    <label for="image2">Image 2</label>
+                    <input type="file" id="image2" name="image2" accept="image/*" multiple>
+                </div>
+                <div class="input-add-container-file-inputs">
+                    <label for="image3">Image 3</label>
+                    <input type="file" id="image3" name="image3" accept="image/*" multiple>
                 </div>
             </div>
+            <div class="input-add-container">
+                <label for="itemName">Item name</label>
+                <input type="text" id="itemName" name = "itemName" class="wide-input">
+            </div>
+            <div class="input-container">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" class="wide-input">
             <div class="input-add-container row-container">
                 <div class="input-row">
                     <label for="price">Price</label>
-                    <input type="text" id="price" class="wide-input">
+                    <input type="text" id="price" name="price" class="wide-input">
                 </div>
                 <div class="input-row">
                     <label for="quantity">Quantity</label>
-                    <input type="text" id="quantity" class="wide-input">
+                    <input type="text" id="quantity" name="quantity" class="wide-input">
                 </div>
             </div>
             <div class="input-add-container">
                 <label for="description">Description of item</label>
-                <textarea id="description" class="wide-input"></textarea>
+                <textarea id="description" name="description" class="wide-input"></textarea>
             </div>
             <div class="input-add-container location-container">
                 <label for="location">Location</label>
                 <input type="text" id="location">
                 <div class="radio-group">
                     <label for="pickUp">Pick Up</label>
-                    <input type="radio" id="pickUp" name="location">
+                    <input type="radio" id="pickUp" name="pickup_option" value="Pick-up">
                     <label for="delivery">Delivery</label>
-                    <input type="radio" id="delivery" name="location">
+                    <input type="radio" id="delivery" name="pickup_option" value="Delivery">
                 </div>
-            </div>
-            <div class="input-container file-inputs">
-                <label for="image1">Image 1</label>
-                <input type="file" id="image1" name="image1" accept="image/*" multiple>
-            </div>
-            <div class="input-container file-inputs">
-                <label for="image2">Image 2</label>
-                <input type="file" id="image2" name="image2" accept="image/*" multiple>
-            </div>
-            <div class="input-container file-inputs">
-                <label for="image3">Image 3</label>
-                <input type="file" id="image3" name="image3" accept="image/*" multiple>
             </div>
             <button type="submit" class="add-new-item-button">Add new item</button>
         </form>
         
     </main>
-    <footer>
+    
+      <footer>
         <p>&copy; 2023 TradeCycle. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+      </footer>
+
+      <script>
+
+    </script>
 </body>
+
 </html>

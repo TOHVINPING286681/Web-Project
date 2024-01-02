@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2023 at 12:30 PM
+-- Generation Time: Jan 02, 2024 at 08:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,9 +47,21 @@ CREATE TABLE `tbl_items` (
   `item_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
   `item_name` varchar(50) NOT NULL,
+  `item_category` varchar(20) NOT NULL,
+  `item_price` decimal(10,0) NOT NULL,
+  `item_quantity` int(4) NOT NULL,
   `item_desc` varchar(255) NOT NULL,
-  `item_type` varchar(50) NOT NULL
+  `item_location` varchar(50) NOT NULL,
+  `item_pickup` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_items`
+--
+
+INSERT INTO `tbl_items` (`item_id`, `user_id`, `item_name`, `item_category`, `item_price`, `item_quantity`, `item_desc`, `item_location`, `item_pickup`) VALUES
+(1, 1, 'Badminton Racket', 'Sports Equipment', 50, 1, 'Lining racket, made in China', '', 'Delivery'),
+(2, 1, 'T-shirt', 'Clothes', 20, 3, 'New T-shirts, M sized', '', 'Delivery');
 
 -- --------------------------------------------------------
 
@@ -88,8 +100,7 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `name`, `user_name`, `user_email`, `user_phone`, `user_password`) VALUES
-(1, 'Ali', 'Ali123', 'ali123@gmail.com', '012-5234456', '$2y$10$du/y2OlZ72s8JAmwvmohg.gObZ0D3xFUzRvTv8G0Rp4t52EwdDBue'),
-(2, 'TH', 'TzeHong', 'hello123@gmail.com', '018-23412351', '$2y$10$Ms0uFEyxsBnCpqsDziPox.KvSHjcEvndtanu7U59RKr/ijGpsjtxy');
+(1, 'Abu', 'Abu1234', 'Abu123@gmail.com', '012-2332532', '$2y$10$WeMOk3V5VFyDRJyLNhVRLudVt8gKyECGZnrd9HL6olYDgE6ASz4ia');
 
 --
 -- Indexes for dumped tables
@@ -134,7 +145,7 @@ ALTER TABLE `tbl_carts`
 -- AUTO_INCREMENT for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
@@ -146,7 +157,7 @@ ALTER TABLE `tbl_orders`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
