@@ -16,7 +16,7 @@
         <div class="username-icon-container">
           <div class="dropdown">
               <button class="dropbtn">
-                  <p class="username1">Username</p>
+                  <p class="username1"></p>
                   <i class="fas fa-user"></i>
               </button>
               <div class="dropdown-content">
@@ -68,55 +68,53 @@
                 <label for="itemName">Item name</label>
                 <input type="text" id="itemName" name = "itemName" class="wide-input">
             </div>
-            <div class="input-container">
+            <div class="input-add-container">
                 <label for="category">Category</label>
-                <div class="dropdownCategory">
-                    <button class="dropbtnCategory" id="categoryDropdown">Select Category</button>
-                    <div class="dropdownCategory-content">
-                        <a href="#">Accessories</a>
-                        <a href="#">Computer</a>
-                        <a href="#">Women's Fashion</a>
-                        <a href="#">Men's Fashion</a>
-                        <a href="#">Mobile Phone</a>
-                        <a href="#">Beauty & Personal Care</a>
-                        <a href="#">Health & Equipment</a>
-                        <a href="#">Baby & Kids</a>
-                        <a href="#">Pet Supplies</a>
-                        <a href="#">Furniture & Home Living</a>
-                        <a href="#">Gadgets</a>
-                        <a href="#">Photography</a>
-                        <a href="#">Sports Equipment</a>
-                        <a href="#">Books & Stationaries</a>
-                        <a href="#">Toys</a>
-                        <a href="#">Car & Motorbikes Accessories</a>
-                        <a href="#">Home Appliances</a>
-                        <a href="#">Others</a>
+                <!-- Dropdown select for category -->
+                <select id="category" name="category" class="wide-input">
+                    <option value="Accessories">Accessories</option>
+                    <option value="Computer">Computer</option>
+                    <option value="Women's Fashion">Women's Fashion</option>
+                    <option value="Men's Fashion">Men's Fashion</option>
+                    <option value="Mobile Phone">Mobile Phone</option>
+                    <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                    <option value="Health & Equipment">Health & Equipment</option>
+                    <option value="Baby & Kids">Baby & Kids</option>
+                    <option value="Pet Supplies">Pet Supplies</option>
+                    <option value="Furniture & Home Living">Furniture & Home Living</option>
+                    <option value="Gadgets">Gadgets</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Sports Equipment">Sports Equipment</option>
+                    <option value="Books & Stationaries">Books & Stationaries</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Car & Motorbikes Accessories">Car & Motorbikes Accessories</option>
+                    <option value="Home Appliances">Home Appliances</option>
+                    <option value="Others">Others</option>
+                    <!-- ... (other category options) -->
+                </select>
+                    <div class="input-row">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" name="price" class="wide-input">
+                    </div>
+                    <div class="input-row">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" id="quantity" name="quantity" class="wide-input">
                     </div>
                 </div>
-            <div class="input-add-container row-container">
-                <div class="input-row">
-                    <label for="price">Price</label>
-                    <input type="text" id="price" name="price" class="wide-input">
+                <div class="input-add-container">
+                    <label for="description">Description of item</label>
+                    <textarea id="description" name="description" class="wide-input"></textarea>
                 </div>
-                <div class="input-row">
-                    <label for="quantity">Quantity</label>
-                    <input type="text" id="quantity" name="quantity" class="wide-input">
+                <div class="input-add-container location-container">
+                    <label for="location">Location</label>
+                    <input type="text" id="location">
+                    <div class="radio-group">
+                        <label for="pickUp">Pick Up</label>
+                        <input type="radio" id="pickUp" name="pickup_option" value="Pick-up">
+                        <label for="delivery">Delivery</label>
+                        <input type="radio" id="delivery" name="pickup_option" value="Delivery">
+                    </div>
                 </div>
-            </div>
-            <div class="input-add-container">
-                <label for="description">Description of item</label>
-                <textarea id="description" name="description" class="wide-input"></textarea>
-            </div>
-            <div class="input-add-container location-container">
-                <label for="location">Location</label>
-                <input type="text" id="location">
-                <div class="radio-group">
-                    <label for="pickUp">Pick Up</label>
-                    <input type="radio" id="pickUp" name="pickup_option" value="Pick-up">
-                    <label for="delivery">Delivery</label>
-                    <input type="radio" id="delivery" name="pickup_option" value="Delivery">
-                </div>
-            </div>
             <button type="submit" class="add-new-item-button">Add new item</button>
         </form>
         
@@ -127,7 +125,23 @@
       </footer>
 
       <script>
-        function previewImage(inputId, imageId) {
+      document.addEventListener('DOMContentLoaded', function () {
+      // Fetch the username using an AJAX request
+       fetch('profile.php')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.user_name) {
+            // Make sure to use the correct key here
+            // Update the username in the dropdown
+            document.querySelector('.username1').innerText = data.user_name;
+            document.querySelector('.username2').innerText = data.user_name;
+          } else {
+            console.error('Error fetching username:', data.error);
+          }
+        })
+        .catch((error) => console.error('Error fetching username:', error));
+    });
+    function previewImage(inputId, imageId) {
         const input = document.getElementById(inputId);
         const preview = document.getElementById(imageId);
         
