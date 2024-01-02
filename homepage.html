@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +10,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <style>
+      .cart-icons a {
+          color: white;
+          text-decoration: none; /* Optional: Remove underline from the link */
+      }
+  </style>
   </head>
   <body>
     <header>
@@ -16,6 +23,7 @@
         <img src="icons/logo.svg" height="100" width="100" />
         <h1>TradeCycle</h1>
       </div>
+   
       <div class="username-icon-container">
         <div class="dropdown">
           <button class="dropbtn">
@@ -27,13 +35,91 @@
             <a href="#">Logout</a>
           </div>
         </div>
+        <div class="cart">
+          <div class="cart-icons">
+            <a href="cart_page.html">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
       </div>
+    
+    
     </header>
+    <header>
+      
+    </header>
+   
+ 
 
     <main>
-      <!-- Main content of the homepage -->
-      <p>This is the homepage content.</p>
-      <!-- Add whatever content you want to display -->
+      <div class="spacing">
+      </div>
+      <div class ="mainContainer">
+      <div class="filter">
+            <h2 id="filter-heading">Filter </h2>
+      
+      <div class="categories">
+      <ul class="filter-categories">
+        <p id="categories"> Categories</p>
+        <li>Accessories</li> <br>
+        <li>Computer</li> <br>
+        <li>Women's Fashion</li> <br>
+        <li>Men's Fashion</li> <br>
+        <li>Mobile Phone</li> <br>
+        <li>Beauty & Personal Care</li> <br>
+        <li>Health & Suppliement</li> <br>
+        <li>Baby & Kids</li> <br>
+        <li>Pet Supplies</li> <br>
+        <li>Furniture & Home Living</li> <br>
+        <li>Gadgets</li> <br>
+        <li>Photography</li> <br>
+        <li>Sports Equipment</li> <br>
+        <li>Books & Stationaries</li> <br>
+        <li>Toys</li> <br>
+        <li>Cars & Motorbikes Accessories</li> <br>
+        <li>Home Appliances</li> <br>
+        <li>Others</li> <br><br>
+    </ul>
+    <p id="categories"> Price Range</p>
+    <ul class="price-range">
+      <li>RM 1-9</li> <br>
+        <li>RM 10-100</li> <br>
+        <li>RM 101-500</li> <br>
+        <li>RM 501-1000</li> <br>
+        <li>RM 1000++</li> <br>
+    </ul>
+
+      </div>
+      </div>
+      
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search...">
+      <button class="search-button" type="submit">
+          <i class="fas fa-search"></i>
+      </button>
+  </div>
+  <div class="grid-container">
+    <div class="grid-item">
+      <img src="icons/chair.jpeg" alt="Image Description">
+      <h3>Item 1</h3>
+      <p>Item details</p>
+      <p>Price</p>
+    </div>
+    <div class="grid-item">
+      <img src="path/to/your/image.jpg" alt="Image Description">
+      <h3>Item 1</h3>
+      <p>Item details</p>
+      <p>Price</p>
+    </div>
+    <div class="grid-item">
+      <img src="path/to/your/image.jpg" alt="Image Description">
+      <h3>Item 1</h3>
+      <p>Item details</p>
+      <p>Price</p>
+    </div>
+
+
+    </div>
     </main>
 
     <footer>
@@ -55,22 +141,6 @@
           })
           .catch((error) => console.error('Error fetching username:', error));
       });
-      // Function to get URL parameters
-    function getParameterByName(name, url = window.location.href) {
-        name = name.replace(/[[]]/g, "\\$&");
-        const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    // Get the 'success' parameter from the URL
-    const successMessage = getParameterByName('success');
-    if (successMessage) {
-        // Display success message (you can customize this)
-        alert(successMessage);
-    }
     </script>
   </body>
 </html>
