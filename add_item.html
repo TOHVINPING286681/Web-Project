@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add new item</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="body-add-item">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body class="body-add-item">
     <header>
         <div class="logo-container">
           <img src="icons/logo.svg" height="100" width="100">
@@ -23,7 +33,21 @@
                   <a href="user_profile.html">Profile</a>
                   <a href="#">Logout</a>
               </div>
+      <div class="logo-container">
+        <img src="icons/logo.svg" height="100" width="100" />
+        <h1>TradeCycle</h1>
+      </div>
+      <div class="username-icon-container">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <p class="username1">Username</p>
+            <i class="fas fa-user"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="user_profile.html">Profile</a>
+            <a href="#">Logout</a>
           </div>
+        </div>
       </div>
     </header>
     <main>
@@ -58,6 +82,42 @@
                     <!-- <img src="placeholder.png" alt="Placeholder image"> -->
                 </div>
             </div>
+      <div class="add-picture-container">
+        <div class="picture-section" id="picture-section-1">
+          <h2>Add Picture 1</h2>
+          <div class="gallery-container">
+            <label for="fileInput1" class="upload-box">
+              <input type="file" id="fileInput1" accept="image/*" multiple />
+              <p>Upload Image</p>
+            </label>
+            <!-- <img src="placeholder.png" alt="Placeholder image"> -->
+          </div>
+        </div>
+        <div class="picture-section" id="picture-section-2">
+          <h2>Add Picture 2</h2>
+          <div class="gallery-container">
+            <label for="fileInput2" class="upload-box">
+              <input type="file" id="fileInput2" accept="image/*" multiple />
+              <p>Upload Image</p>
+            </label>
+            <!-- <img src="placeholder.png" alt="Placeholder image"> -->
+          </div>
+        </div>
+        <div class="picture-section" id="picture-section-3">
+          <h2>Add Picture 3</h2>
+          <div class="gallery-container">
+            <label for="fileInput3" class="upload-box">
+              <input type="file" id="fileInput3" accept="image/*" multiple />
+              <p>Upload Image</p>
+            </label>
+            <!-- <img src="placeholder.png" alt="Placeholder image"> -->
+          </div>
+        </div>
+      </div>
+      <form name="addItemForm" action="" class="add-item-form">
+        <div class="input-add-container">
+          <label for="itemName">Item name</label>
+          <input type="text" id="itemName" class="wide-input" />
         </div>
         <form name="addItemForm" action="" class="add-item-form">
             <div class="input-add-container">
@@ -95,6 +155,36 @@
             <button type="submit" class="add-new-item-button">Add new item</button>
         </form>
         
+        <div class="input-add-container">
+          <label for="category">Category</label>
+          <input type="text" id="category" class="wide-input" />
+        </div>
+        <div class="input-add-container row-container">
+          <div class="input-row">
+            <label for="price">Price</label>
+            <input type="text" id="price" class="wide-input" />
+          </div>
+          <div class="input-row">
+            <label for="quantity">Quantity</label>
+            <input type="text" id="quantity" class="wide-input" />
+          </div>
+        </div>
+        <div class="input-add-container">
+          <label for="description">Description of item</label>
+          <textarea id="description" class="wide-input"></textarea>
+        </div>
+        <div class="input-add-container location-container">
+          <label for="location">Location</label>
+          <input type="text" id="location" />
+          <div class="radio-group">
+            <label for="pickUp">Pick Up</label>
+            <input type="radio" id="pickUp" name="location" />
+            <label for="delivery">Delivery</label>
+            <input type="radio" id="delivery" name="location" />
+          </div>
+        </div>
+        <button type="submit" class="add-new-item-button">Add new item</button>
+      </form>
     </main>
     
       <footer>
@@ -105,5 +195,28 @@
       src="script.js">
     </script>
 </body>
+    <footer>
+      <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+    </footer>
 
+</html>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fetch the username using an AJAX request
+        fetch('profile.php')
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.user_name) {
+              // Make sure to use the correct key here
+              // Update the username in the dropdown
+              document.querySelector('.username1').innerText = data.user_name;
+            } else {
+              console.error('Error fetching username:', data.error);
+            }
+          })
+          .catch((error) => console.error('Error fetching username:', error));
+      });
+    </script>
+  </body>
 </html>
