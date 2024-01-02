@@ -44,17 +44,24 @@
         </div> -->
         <form name="addItemForm" action="add_item.php" class="add-item-form" method="POST" enctype="multipart/form-data">
             <div class="file-input-container">
-                <div class="input-add-container-file-inputs">
-                    <label for="image1">Image 1</label>
-                    <input type="file" id="image1" name="image1" accept="image/*" multiple>
-                </div>
-                <div class="input-add-container-file-inputs">
-                    <label for="image2">Image 2</label>
-                    <input type="file" id="image2" name="image2" accept="image/*" multiple>
-                </div>
-                <div class="input-add-container-file-inputs">
-                    <label for="image3">Image 3</label>
-                    <input type="file" id="image3" name="image3" accept="image/*" multiple>
+                <div class="file-input-container">
+                    <div class="input-add-container-file-inputs">
+                        <label for="image1">Image 1</label>
+                        <input type="file" id="image1" name="image1" accept="image/*" multiple onchange="previewImage('image1', 'previewImage1')">
+                        <img id="previewImage1" alt="Preview Image" style="display: none;">
+                    </div>
+                
+                    <div class="input-add-container-file-inputs">
+                        <label for="image2">Image 2</label>
+                        <input type="file" id="image2" name="image2" accept="image/*" multiple onchange="previewImage('image2', 'previewImage2')">
+                        <img id="previewImage2" alt="Preview Image" style="display: none;">
+                    </div>
+                
+                    <div class="input-add-container-file-inputs">
+                        <label for="image3">Image 3</label>
+                        <input type="file" id="image3" name="image3" accept="image/*" multiple onchange="previewImage('image3', 'previewImage3')">
+                        <img id="previewImage3" alt="Preview Image" style="display: none;">
+                    </div>
                 </div>
             </div>
             <div class="input-add-container">
@@ -63,7 +70,29 @@
             </div>
             <div class="input-container">
                 <label for="category">Category</label>
-                <input type="text" id="category" name="category" class="wide-input">
+                <div class="dropdownCategory">
+                    <button class="dropbtnCategory" id="categoryDropdown">Select Category</button>
+                    <div class="dropdownCategory-content">
+                        <a href="#">Accessories</a>
+                        <a href="#">Computer</a>
+                        <a href="#">Women's Fashion</a>
+                        <a href="#">Men's Fashion</a>
+                        <a href="#">Mobile Phone</a>
+                        <a href="#">Beauty & Personal Care</a>
+                        <a href="#">Health & Equipment</a>
+                        <a href="#">Baby & Kids</a>
+                        <a href="#">Pet Supplies</a>
+                        <a href="#">Furniture & Home Living</a>
+                        <a href="#">Gadgets</a>
+                        <a href="#">Photography</a>
+                        <a href="#">Sports Equipment</a>
+                        <a href="#">Books & Stationaries</a>
+                        <a href="#">Toys</a>
+                        <a href="#">Car & Motorbikes Accessories</a>
+                        <a href="#">Home Appliances</a>
+                        <a href="#">Others</a>
+                    </div>
+                </div>
             <div class="input-add-container row-container">
                 <div class="input-row">
                     <label for="price">Price</label>
@@ -98,7 +127,30 @@
       </footer>
 
       <script>
+        function previewImage(inputId, imageId) {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(imageId);
+        
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
 
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    const originalImage = document.getElementById('previewImage');
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = 250; // Desired width
+    canvas.height = 250; // Desired height
+    context.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+    const resizedImage = canvas.toDataURL('image/jpeg'); // Adjust format as needed
+    originalImage.src = resizedImage;
     </script>
 </body>
 
