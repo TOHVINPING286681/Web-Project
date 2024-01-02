@@ -106,6 +106,7 @@
 
 .input-container input {
   padding-left: 30px; /* Adjust this value based on the icon's width and padding */
+  text-align: right;
 }
 
 .container.input:invalid {
@@ -279,17 +280,19 @@ header h1{
 .dropdown-content {
   display: none;
   position: absolute;
+  max-width: 80px;
   background-color: #f9f9f9;
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
   color: #333;
-  padding: 12px 16px;
+  padding: 8px 12px;
+  font-size: 14px;
   text-decoration: none;
   display: block;
+  max-width: 80px;
 }
 
 .dropdown-content a:hover {
@@ -467,20 +470,20 @@ main {
   border: 1px solid transparent;
 }
 
-.input-container {
+.input-add-container {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.input-container label {
+.input-add-container label {
   width: 120px; /* Fixed width for labels */
   padding-right: 20px;
   text-align: right;
 }
 
-.input-container input,
-.input-container textarea {
+.input-add-container input,
+.input-add-container textarea {
   flex: 1;
   height: 30px;
   padding: 5px;
@@ -488,11 +491,11 @@ main {
   border-radius: 4px;
 }
 
-.input-container textarea {
+.input-add-container textarea {
   resize: vertical;
 }
 
-.input-container.row-container {
+.input-add-container.row-container {
   flex-direction: row;
 }
 
