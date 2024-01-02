@@ -10,12 +10,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <style>
-      .cart-icons a {
-          color: white;
-          text-decoration: none; /* Optional: Remove underline from the link */
-      }
-  </style>
   </head>
   <body>
     <header>
@@ -35,26 +29,19 @@
             <a href="#">Logout</a>
           </div>
         </div>
-        <div class="cart">
-          <div class="cart-icons">
-            <a href="add_cart.html">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
+        <div class="cart-icons">
+          <a href="add_cart.html">
+              <i class="fas fa-shopping-cart"></i>
+          </a>
       </div>
-    
-    
+      </div>
     </header>
-  
- 
 
-    <main>
-      <div class="spacing">
-      </div>
-      <div class ="mainContainer">
+    <main class="home-main">
+      <div class ="leftContainer">
       <div class="filter">
             <h2 id="filter-heading">Filter </h2>
-      
+
       <div class="categories">
       <ul class="filter-categories">
         <p id="categories"> Categories</p>
@@ -85,10 +72,10 @@
         <li>RM 501-1000</li> <br>
         <li>RM 1000++</li> <br>
     </ul>
-
       </div>
       </div>
-      
+      </div>
+      <div class="rightContainer">
     <div class="search-container">
       <input type="text" class="search-input" placeholder="Search...">
       <button class="search-button" type="submit">
@@ -99,29 +86,25 @@
     <div class="grid-item">
       <img src="icons/chair.jpeg" alt="Image Description">
       <h3>Item 1</h3>
-      <p>Item details</p>
-      <p>Price</p>
+      <p id="mainPrice">Price</p>
       <!-- <a href="user_profile.html" style="background-color: transparent;"> -->
       <!-- <div class="btn"><a href="user_profile.html">View More</div></a> -->
       <button onclick="location.href = 'item_detail.html';" class="btn" >View More</button>
     </div>
     <div class="grid-item">
-      <img src="path/to/your/image.jpg" alt="Image Description">
+      <img src="icons/iwatch.jpeg" alt="Image Description">
       <h3>Item 1</h3>
-      <p>Item details</p>
-      <p>Price</p>
+      <p id="mainPrice">Price</p>
       <button onclick="location.href = 'item_detail.html';" class="btn" >View More</button>
     </div>
     <div class="grid-item">
-      <img src="path/to/your/image.jpg" alt="Image Description">
+      <img src="icons/iphone.jpeg" alt="Image Description">
       <h3>Item 1</h3>
-      <p>Item details</p>
-      <p>Price</p>
+      <p id="mainPrice">Price</p>
       <button onclick="location.href = 'item_detail.html';" class="btn" >View More</button>
     </div>
-
-
     </div>
+  </div>
     </main>
 
     <footer>
