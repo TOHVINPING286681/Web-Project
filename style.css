@@ -614,6 +614,7 @@ main {
 /* add_cart */
 .add-cart-main h1{
   font-weight: 600;
+  padding: 30px;
 }
 .add-cart-main p{
   font-weight: 100;
@@ -623,8 +624,71 @@ main {
   flex-direction: row;
 }
 
-.item-table-container{
-  
-  display: flex;
-  justify-content: space-between;
+.item-table-container table{
+  width: 100%;
 }
+
+.item-table-container th{
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+} 
+
+.item-table-container td {
+  font-weight: 100;
+  text-align: center;
+  padding: 10px;
+}
+
+.item-table-container th:nth-child(1),
+.item-table-container th:nth-child(2),
+.item-table-container th:nth-child(3) {
+  color: transparent;
+}
+
+.item-table-container img {
+  width: 150px;
+  height: 150px;
+  display: block; /* To prevent any potential alignment issues */
+  margin: auto; /* Center the image within the cell */
+}
+
+.quantity-button button {
+  background-color: transparent;
+  color: #ccc;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 2px;
+  border-radius: 4px;
+}
+
+.quantity-button button:hover {
+  background-color: transparent;
+  color: #000000;
+}
+
+.check-out-button {
+  display: block;
+  width: 200px;
+  margin: 20px auto 0; /* <-- This margin might be causing the white space */
+  padding: 10px;
+  margin-bottom: 0; /* <-- Set margin-bottom to 0 to remove the white space */
+  background-color: #BCA37F;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+
+#totalPrice {
+  color: #000000;
+  font-weight: 500;
+  border-top: 1px solid #BCA37F; 
+  padding-top: 10px; 
+}
+
