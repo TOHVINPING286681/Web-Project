@@ -411,7 +411,7 @@ main {
   background-color: #FFF2D8;
 }
 
-.add-picture-container {
+/* .add-picture-container {
   width: auto;
   overflow: hidden;
   background-color: #FFF2D8;
@@ -442,13 +442,13 @@ main {
 }
 
 .upload-box {
-  width: 300px; /* Adjust width as needed */
-  height: 200px; /* Adjust height as needed */
+  width: 300px; 
+  height: 200px; 
   border: 2px solid #ccc;
   background-color: #fff;
   display: flex;
-  flex-direction: column; /* Change to column layout */
-  justify-content: center; /* Center items vertically */
+  flex-direction: column; 
+  justify-content: center; 
   text-align: center;
   cursor: pointer;
   padding: 20px;
@@ -460,8 +460,22 @@ main {
 }
 
 .gallery img {
-  width: 200px; /* Adjust for larger image */
-  height: 150px; /* Adjust for larger image */
+  width: 200px; 
+  height: 150px; 
+} */
+
+.file-input-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.input-add-container-file-inputs{
+  max-width: 300px;
+  padding: 30px;
+  align-items: center;
 }
 
 .add-item-form {
@@ -597,3 +611,20 @@ main {
   display: block;
 }
 
+/* add_cart */
+.add-cart-main h1{
+  font-weight: 600;
+}
+.add-cart-main p{
+  font-weight: 100;
+  display: flex;
+  align-items: center; /* Adjust if necessary */
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.item-table-container{
+  
+  display: flex;
+  justify-content: space-between;
+}
