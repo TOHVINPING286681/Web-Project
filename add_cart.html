@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="body-add-cart">
+    <header>
+        <div class="logo-container">
+          <img src="icons/logo.svg" height="100" width="100">
+          <h1>TradeCycle</h1>
+        </div>
+        <div class="username-icon-container">
+          <div class="dropdown">
+              <button class="dropbtn">
+                  <p class="username1">Username</p>
+                  <i class="fas fa-user"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="homepage.html">Back to Homepage</a>
+                <a href="#">Logout</a>
+              </div>
+          </div>
+      </div>
+    </header>
+    <main class="add-cart-main">
+        <div>
+            <h1>My Cart</h1>
+        </div>
+        <div class="item-table-container">
+            <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Picture</th>
+                    <th>Item Name</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><img src="icons/table.jpg" alt="Item image"></td>
+                    <td>Item Name 1</td>
+                    <td>RM45</td>
+                    <td class="quantity-button">
+                      <button onclick="decrementQty()">-</button>
+                      1
+                      <button onclick="incrementQty()">+</button>
+                    </td>
+                    <td>RM45</td>
+                  </tr>
+                  <!-- Add the row for total price -->
+                  <tr>
+                    <td colspan="5"></td>
+                    <td id="totalPrice">RM45</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="submit" class="check-out-button">Check Out</button>       
+          </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+      </footer>
+
+      <script>
+        function incrementQty() {
+          var qtyElement = document.querySelector('#quantity');
+          var qtyValue = parseInt(qtyElement.textContent);
+          qtyElement.textContent = qtyValue + 1;
+        }
+      
+        function decrementQty() {
+          var qtyElement = document.querySelector('#quantity');
+          var qtyValue = parseInt(qtyElement.textContent);
+          if (qtyValue > 1) {
+            qtyElement.textContent = qtyValue - 1;
+          }
+        }
+      </script>
+</body>
+</html>
