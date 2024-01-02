@@ -1,4 +1,8 @@
 <?php
+// Add this line at the beginning of your script
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 
 include('dbconnect.php'); // Include your database connection

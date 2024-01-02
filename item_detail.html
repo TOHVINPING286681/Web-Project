@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeCycle - Homepage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      .cart-icons a {
+          color: white;
+          text-decoration: none; /* Optional: Remove underline from the link */
+      }
+  </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="icons/logo.svg" height="100" width="100" />
+        <h1>TradeCycle</h1>
+      </div>
+   
+      <div class="username-icon-container">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <p class="username1"></p>
+            <i class="fas fa-user"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="user_profile.html">Profile</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+        <div class="cart">
+          <div class="cart-icons">
+            <a href="add_cart.html">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+      </div>
+    
+    
+    </header>
+  
+ 
+
+    <main>
+      <div class="spacing">
+      </div>
+      <div class ="mainContainer">
+        <div class="scrolling-container">
+            <div class="item-grid-container">
+              <div class="item-grid-item">
+                <img src="icons/chair.jpeg" alt="">
+              </div>
+              <div class="item-grid-item">
+                <img src="icons/chair.jpeg" alt="">
+              </div>
+              <div class="item-grid-item">
+                <img src="icons/chair.jpeg" alt="">
+              </div>
+              <!-- Add more grid items as needed -->
+            </div>
+          </div>
+          <div class>
+
+          </div>
+        
+    </div>
+      <div class="item-info-container">
+            <div class="grid-container">
+              <div class="grid-item">
+                <h3>Item 1</h3>
+                <p>Owner: John Doe</p>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum turpis eu libero cursus, at cursus odio ultricies. Sed consectetur velit vel tellus dignissim, vel aliquam neque tincidunt.</p>
+                <button onclick="addToCart('Item 1')" class="btn">Add to Cart</button>
+              </div>
+              <!-- Add more grid items as needed -->
+            </div>
+          </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fetch the username using an AJAX request
+        fetch('profile.php')
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.user_name) {
+              // Make sure to use the correct key here
+              // Update the username in the dropdown
+              document.querySelector('.username1').innerText = data.user_name;
+            } else {
+              console.error('Error fetching username:', data.error);
+            }
+          })
+          .catch((error) => console.error('Error fetching username:', error));
+      });
+    </script>
+  </body>
+  </html>

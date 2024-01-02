@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Libre+Baskerville:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Roboto+Condensed:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Libre+Baskerville:wght@700&family=Pacifico&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Roboto+Condensed:wght@300&display=swap');
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,7 +8,7 @@
 }
 
 /* index */
-.body-index{
+.body-index {
   background-color: #c9d6ff;
   background: linear-gradient(to right, #e2e2e2, #c9d6ff);
   display: flex;
@@ -18,7 +18,7 @@
   height: 100vh;
 }
 
-.container{
+.container {
   background-color: #fff;
   box-shadow: 0 5 px 15 px rgba(0, 0, 0, 0.35);
   position: relative;
@@ -33,25 +33,25 @@
   font-weight: 800;
 }
 
-.container p{
+.container p {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.3px;
   margin: 20px 0;
 }
 
-.container span{
+.container span {
   font-size: 12px;
 }
 
-.container a{
+.container a {
   color: #333;
   font-size: 10px;
   text-decoration: none;
   margin: 15px 0 10px;
 }
 
-.container button{
+.container button {
   background-color: #113946;
   color: #fff;
   font-size: 12px;
@@ -65,12 +65,12 @@
   cursor: pointer;
 }
 
-.container button.hidden{
+.container button.hidden {
   background-color: transparent;
   border-color: #fff;
 }
 
-.container form{
+.container form {
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -80,9 +80,9 @@
   height: 100%;
 }
 
-.container input{
+.container input {
   background-color: #fff;
-  border:none;
+  border: none;
   border-bottom: 1px solid #607274;
   margin: 2px 0;
   padding: 10px 15px;
@@ -114,7 +114,7 @@
   border: 2px solid black;
 }
 
-.form-container{
+.form-container {
   position: absolute;
   top: 0;
   height: 100%;
@@ -126,42 +126,44 @@
   margin-top: 5px;
 }
 
-.sign-in{
+.sign-in {
   left: 0;
   width: 50%;
   z-index: 2;
 }
 
-.container.active .sign-in{
+.container.active .sign-in {
   transform: translateX(100%);
 }
 
-.sign-up{
+.sign-up {
   left: 0;
   width: 50%;
   opacity: 0;
   z-index: 1;
 }
 
-.container.active .sign-up{
+.container.active .sign-up {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
   animation: move 0.6s;
 }
 
-@keyframes move{
-  0%, 49.99%{
+@keyframes move {
+  0%,
+  49.99% {
     opacity: 0;
     z-index: 1;
   }
-  50%, 100%{
+  50%,
+  100% {
     opacity: 1;
     z-index: 5;
   }
 }
 
-.toggle-container{
+.toggle-container {
   position: absolute;
   top: 0;
   left: 50%;
@@ -177,11 +179,11 @@
   font-size: 80px;
 }
 
-.container.active .toggle-container{
+.container.active .toggle-container {
   transform: translateX(-100%);
 }
 
-.toggle{
+.toggle {
   background-color: #113946;
   height: 100%;
   background: #113946;
@@ -194,11 +196,11 @@
   transition: all 0.6s ease-in-out;
 }
 
-.container.active .toggle{
+.container.active .toggle {
   transform: translateX(50%);
 }
 
-.toggle-panel{
+.toggle-panel {
   position: absolute;
   width: 50%;
   height: 100%;
@@ -213,20 +215,20 @@
   transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
+.toggle-left {
   transform: translateX(-200%);
 }
 
-.container.active .toggle-left{
+.container.active .toggle-left {
   transform: translateX(0);
 }
 
-.toggle-right{
+.toggle-right {
   right: 0;
   transform: translateX(0);
 }
 
-.container.active .toggle-right{
+.container.active .toggle-right {
   transform: translateX(200%);
 }
 
@@ -235,7 +237,7 @@
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #FFF2D8;
+  background-color: #fff2d8;
 }
 
 header {
@@ -247,18 +249,19 @@ header {
   align-items: center;
 }
 
-header h1{
+header h1 {
   font-family: 'Pacifico', cursive;
   font-size: 50px;
 }
 
-.logo-container{
+.logo-container {
   display: flex;
   justify-content: center;
   margin-left: 40%;
 }
 
-.username-icon-container p { /* in header */
+.username-icon-container p {
+  /* in header */
   margin-right: 10px;
 }
 
@@ -275,7 +278,6 @@ header h1{
   padding: 10px;
   display: flex;
   justify-content: space-between;
-
 }
 
 .dropdown-content {
@@ -283,7 +285,7 @@ header h1{
   position: absolute;
   max-width: 100px;
   background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -313,7 +315,7 @@ header h1{
   margin-top: 20px;
 }
 
-.username2{ 
+.username2 {
   font-weight: bold;
   margin-left: 10px;
   font-size: 40px;
@@ -326,10 +328,10 @@ header h1{
 }
 
 .add-item-button {
-  background-color: #BCA37F;
+  background-color: #bca37f;
   color: #fff;
   padding: 10px 30px;
-  border: 1px solid #BCA37F;
+  border: 1px solid #bca37f;
   border-radius: 0px;
   cursor: pointer;
   font-size: 17px;
@@ -342,7 +344,7 @@ header h1{
 
 .add-item-button:hover {
   background-color: #fff;
-  color: #BCA37F;
+  color: #bca37f;
 }
 
 .user-info {
@@ -352,9 +354,9 @@ header h1{
 }
 
 .item-container {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px; 
+  gap: 30px;
   width: 80%;
   margin: 0 auto;
   border-radius: 20px;
@@ -387,9 +389,9 @@ header h1{
   text-align: center;
 }
 
-.item-price{
+.item-price {
   font-weight: 100;
-  color: #BCA37F;
+  color: #bca37f;
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -407,8 +409,8 @@ footer {
 }
 
 /* add item page */
-.body-add-item{
-  background-color: #FFF2D8;
+.body-add-item {
+  background-color: #fff2d8;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
@@ -416,7 +418,7 @@ footer {
 }
 
 main {
-  background-color: #FFF2D8;
+  background-color: #fff2d8;
   flex: 1;
 }
 
@@ -441,14 +443,14 @@ main {
 }
 
 #previewImage {
-  max-width: 250px; 
-  max-height: 250px; 
+  max-width: 250px;
+  max-height: 250px;
   margin-top: 10px;
   position: absolute; /* Positions relative to the parent container */
   top: 0; /* Aligns with the top of the container */
   left: 0; /* Aligns with the left of the container */
-  bottom: 0; 
-  right: 0; 
+  bottom: 0;
+  right: 0;
   margin: auto; /* Centers the image within the container */
   object-fit: contain; /* Adjust as needed, 'contain' preserves aspect ratio without cropping */
 }
@@ -522,7 +524,7 @@ main {
   margin-right: 10px;
 }
 
-.radio-group input[type="radio"] {
+.radio-group input[type='radio'] {
   transform: scale(0.8);
   margin-top: 2px;
   color: #000000;
@@ -534,7 +536,7 @@ main {
   margin: 20px auto 0;
   padding: 10px;
   margin-bottom: 20px;
-  background-color: #BCA37F;
+  background-color: #bca37f;
   color: #fff;
   border: none;
   border-radius: 0px;
@@ -590,11 +592,11 @@ main {
 }
 
 /* add_cart */
-.add-cart-main h1{
+.add-cart-main h1 {
   font-weight: 600;
   padding: 30px;
 }
-.add-cart-main p{
+.add-cart-main p {
   font-weight: 100;
   display: flex;
   align-items: center; /* Adjust if necessary */
@@ -602,15 +604,15 @@ main {
   flex-direction: row;
 }
 
-.item-table-container table{
+.item-table-container table {
   width: 100%;
 }
 
-.item-table-container th{
+.item-table-container th {
   font-weight: 600;
   text-align: center;
   padding: 10px;
-} 
+}
 
 .item-table-container td {
   font-weight: 100;
@@ -653,7 +655,7 @@ main {
   margin: 20px auto 0; /* <-- This margin might be causing the white space */
   padding: 10px;
   margin-bottom: 0; /* <-- Set margin-bottom to 0 to remove the white space */
-  background-color: #BCA37F;
+  background-color: #bca37f;
   color: #fff;
   border: none;
   border-radius: 0px;
@@ -665,8 +667,8 @@ main {
 #totalPrice {
   color: #000000;
   font-weight: 500;
-  border-top: 1px solid #BCA37F; 
-  padding-top: 10px; 
+  border-top: 1px solid #bca37f;
+  padding-top: 10px;
 }
 
 /* homepage */
@@ -674,86 +676,88 @@ main {
   color: white;
 }
 
-.mainContainer{
-display:flex;
+.mainContainer {
+  display: flex;
 }
 .spacing {
-display: flex;
-height: 20px;
-background-color: #FFF2D8;
+  display: flex;
+  height: 20px;
+  background-color: #fff2d8;
 }
 .search-container {
-display: flex;
-margin-top: 20px;
-background-color: #FFF2D8;
-position:absolute;
-right: 10px;
-top: 21%; 
-background-color: transparent;
+  display: flex;
+  margin-top: 20px;
+  background-color: #fff2d8;
+  position: absolute;
+  right: 10px;
+  top: 21%;
+  background-color: transparent;
 }
 
 .search-input {
-flex: 1;
-padding: 8px;
+  flex: 1;
+  padding: 8px;
 }
 
 .search-button {
-padding: 8px;
-background-color: #113946;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+  padding: 8px;
+  background-color: #113946;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.filter-categories li, .price-range li {
-padding: 5px 10px;
-background-color: transparent;
-/* margin-bottom: 5px; */
-border-radius: 5px;
-display: inline-block;
-cursor: pointer;
-border: 1px solid transparent;
-/* min-width: 150px; */
-text-align: left;
+.filter-categories li,
+.price-range li {
+  padding: 5px 10px;
+  background-color: transparent;
+  /* margin-bottom: 5px; */
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid transparent;
+  /* min-width: 150px; */
+  text-align: left;
 }
 #filter-heading {
-color: white;
+  color: white;
 }
 #categories {
-color: #bd9213;
-font-weight: bold;
+  color: #bd9213;
+  font-weight: bold;
+}
+.filter {
+  padding: 5px 5px;
+  background-color: #bd9213;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  display: inline-block;
 
+  border: 1px solid #ccc;
+  min-width: 150px;
+  text-align: left;
 }
-.filter{
-padding: 5px 5px;
-background-color: #bd9213;
-margin-bottom: 10px;
-margin-left: 50px;
-display: inline-block;
-
-border: 1px solid #ccc;
-min-width: 150px;
-text-align: left;
-}
-.categories{
-background-color: #ffffff;
+.categories {
+  background-color: #ffffff;
 }
 
-.filter-categories, .price-range {
-list-style-type: none;
-padding: 0;
+.filter-categories,
+.price-range {
+  list-style-type: none;
+  padding: 0;
 }
-.filter-categories li:hover, .price-range li:hover {
-background-color: #ddd;
+.filter-categories li:hover,
+.price-range li:hover {
+  background-color: #ddd;
 }
 
 .grid-container {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-gap: 5%; 
-background-color: transparent;
-padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5%;
+  background-color: transparent;
+  padding: 10px;
 }
 
 .grid-item {
@@ -763,28 +767,100 @@ padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
   height: 400px;
- }
- .grid-item img {
+}
+.grid-item img {
   max-width: 100%; /* Adjust the image size */
   height: auto;
   max-height: 100%;
   display: block; /* Remove any extra space below the image */
-  margin: 0 auto;
+  margin: 0 auto;
 }
 
-.grid-container .btn{
+.grid-container .btn {
   width: 125px;
   background: #4abd3e;
   color: #fff;
   border-radius: 3px;
   padding: 8px 5px;
   text-align: center;
-  font: size 200px;;
+  font: size 200px;
   font-weight: 200;
   cursor: pointer;
   margin: 0 auto;
-   }
+}
 
-.grid-container .btn:hover{
-  background: #3bd62b;
+.grid-container .btn:hover {
+  background: #3bd62b;
+}
+
+.item-info-container {
+  display: flex;
+}
+
+.item-info-container .grid-container {
+  display: flex;
+  gap: 10px;
+}
+
+.item-info-container .grid-item {
+  flex: 0 0 auto;
+  background-color: transparent;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  width: 100%; /* Adjust width as needed */
+  display: block;
+}
+
+.item-info-container .grid-item h3 {
+  margin-top: 10px;
+}
+
+.item-info-container .grid-item p {
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.item-info-container .grid-item .btn {
+  width: 125px;
+  background: #4abd3e;
+  color: #fff;
+  border-radius: 3px;
+  padding: 8px 5px;
+  font-size: 14px; /* Adjust font size */
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+
+.item-info-container .grid-item .btn:hover {
+  background: #3bd62b;
+}
+
+.scrolling-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent items from wrapping to the next line */
+}
+
+.item-grid-container {
+  display: flex; /* Use flex container for horizontal layout */
+  gap: 100px; /* Adjust the gap between items */
+}
+
+.item-grid-item {
+  flex: 0 0 auto; /* Don't allow items to grow, shrink, or wrap */
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  height: 300px;
+}
+
+.item-grid-item img {
+  max-width: 100%;
+  height: auto;
+  max-height: 60%; /* Adjust the image height */
+  display: block;
+  margin: 0 auto;
 }
