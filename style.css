@@ -464,19 +464,40 @@ main {
   height: 150px; 
 } */
 
-.file-input-container{
+.file-input-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  margin-bottom: 20px;
+  gap: 30px;
 }
 
-.input-add-container-file-inputs{
+.input-add-container-file-inputs {
   max-width: 300px;
+  max-height: 300px;
   padding: 30px;
   align-items: center;
+  border: 1px dashed #ccc;
+  position: relative; /* Establishes a positioning context for absolute children */
+  overflow: hidden; /* Prevents image overflow */
 }
+
+#previewImage {
+  max-width: 250px; 
+  max-height: 250px; 
+  margin-top: 10px;
+  position: absolute; /* Positions relative to the parent container */
+  top: 0; /* Aligns with the top of the container */
+  left: 0; /* Aligns with the left of the container */
+  bottom: 0; 
+  right: 0; 
+  margin: auto; /* Centers the image within the container */
+  object-fit: contain; /* Adjust as needed, 'contain' preserves aspect ratio without cropping */
+}
+
+
 
 .add-item-form {
   width: 80%;
@@ -581,6 +602,8 @@ main {
   border-radius: 4px;
   cursor: pointer;
   padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 45px;
   display: flex;
   justify-content: space-between;
 }
@@ -691,4 +714,5 @@ main {
   border-top: 1px solid #BCA37F; 
   padding-top: 10px; 
 }
+
 
