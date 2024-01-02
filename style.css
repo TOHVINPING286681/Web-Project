@@ -407,62 +407,18 @@ footer {
 }
 
 /* add item page */
+.body-add-item{
+  background-color: #FFF2D8;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
 main {
   background-color: #FFF2D8;
+  flex: 1;
 }
-
-/* .add-picture-container {
-  width: auto;
-  overflow: hidden;
-  background-color: #FFF2D8;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-}
-
-.picture-section {
-  width: 100%;
-  height: 300px;
-  object-fit: contain;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.picture-section h2 {
-  margin-bottom: 15px;
-}
-
-.gallery-container {
-  display: flex;
-  flex-wrap: nowrap;
-  transition: transform 0.5s ease;
-}
-
-.upload-box {
-  width: 300px; 
-  height: 200px; 
-  border: 2px solid #ccc;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  text-align: center;
-  cursor: pointer;
-  padding: 20px;
-}
-
-.upload-box p {
-  margin: 20;
-  display: flex;
-}
-
-.gallery img {
-  width: 200px; 
-  height: 150px; 
-} */
 
 .file-input-container {
   display: flex;
@@ -496,8 +452,6 @@ main {
   margin: auto; /* Centers the image within the container */
   object-fit: contain; /* Adjust as needed, 'contain' preserves aspect ratio without cropping */
 }
-
-
 
 .add-item-form {
   width: 80%;
@@ -579,6 +533,7 @@ main {
   width: 200px;
   margin: 20px auto 0;
   padding: 10px;
+  margin-bottom: 20px;
   background-color: #BCA37F;
   color: #fff;
   border: none;
@@ -802,13 +757,34 @@ padding: 10px;
 }
 
 .grid-item {
-background-color: #f2f2f2;
-padding: 20px;
-font-size: 30px;
-text-align: center;
-border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  height: 400px;
+ }
+ .grid-item img {
+  max-width: 100%; /* Adjust the image size */
+  height: auto;
+  max-height: 100%;
+  display: block; /* Remove any extra space below the image */
+  margin: 0 auto;
 }
-.grid-item img {
-max-width: 100%; /* Adjust the image size */
-height: auto;
+
+.grid-container .btn{
+  width: 125px;
+  background: #4abd3e;
+  color: #fff;
+  border-radius: 3px;
+  padding: 8px 5px;
+  text-align: center;
+  font: size 200px;;
+  font-weight: 200;
+  cursor: pointer;
+  margin: 0 auto;
+   }
+
+.grid-container .btn:hover{
+  background: #3bd62b;
 }
