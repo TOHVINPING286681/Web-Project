@@ -42,13 +42,13 @@ if (isset($_GET['item_id'])) {
             <i class="fas fa-user"></i>
           </button>
           <div class="dropdown-content">
-            <a href="user_profile.html">Profile</a>
+            <a href="user_profile.php">Profile</a>
             <a href="#">Logout</a>
           </div>
         </div>
         <div class="cart">
           <div class="cart-icons">
-            <a href="add_cart.html">
+            <a href="shopping_cart.php">
                 <i class="fas fa-shopping-cart"></i>
             </a>
         </div>
@@ -71,20 +71,28 @@ if (isset($_GET['item_id'])) {
                   </div>  
                     <div class="item-details-namebutton">
                     <h2><?php echo $item['item_name']; ?></h2>
-                    <button type="submit" class="add-to-cart-btn">Add to Cart +</button>
-                   </div>
-                    <div class="item-details-desc">
-                    <p>Price: RM <?php echo $item['item_price']; ?></p>
-                    <p>Quantity: <?php echo $item['item_quantity']; ?></p>
-                    <p>Description: <?php echo $item['item_desc']; ?></p>
-                    <!--  -->
                     <form action="add_to_cart.php" method="POST">
                       <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>">
                       <input type="hidden" name="item_name" value="<?php echo $item['item_name']; ?>">
                       <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>">
                       <input type="hidden" name="cart_qty" value="1">
                       <!-- Other hidden inputs if needed -->
-                  </form>
+                    <button type="submit" class="add-to-cart-btn">Add to Cart +</button>
+                    </form>
+                   </div>
+                    <div class="item-details-desc">
+                    <p>Price: RM <?php echo $item['item_price']; ?></p>
+                    <p>Quantity: <?php echo $item['item_quantity']; ?></p>
+                    <p>Description: <?php echo $item['item_desc']; ?></p>
+                    <!--  -->
+                    <!-- <form action="add_to_cart.php" method="POST">
+                      <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>">
+                      <input type="hidden" name="item_name" value="<?php echo $item['item_name']; ?>">
+                      <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>">
+                      <input type="hidden" name="cart_qty" value="1">
+                      
+                      <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                  </form> -->
                 </div>
             <?php else: ?>
                 <p>Item not found</p>
