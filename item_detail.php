@@ -196,7 +196,7 @@ if (isset($_GET['item_id'])) {
       //   .catch(error => {
       //       console.error('Error adding item to cart:', error);
       //   });
-    }
+    
     </script>
   </body>
   </html>

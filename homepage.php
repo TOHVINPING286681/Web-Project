@@ -95,15 +95,15 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </ul>
             <p id="categories">Price Range</p>
             <ul class="price-range">
-              <li>1-9</li>
+              <li>RM1-9</li>
               <br />
-              <li>10-100</li>
+              <li>RM10-100</li>
               <br />
-              <li>101-500</li>
+              <li>RM101-500</li>
               <br />
-              <li>501-1000</li>
+              <li>RM501-1000</li>
               <br />
-              <li>1000++</li>
+              <li>RM1000++</li>
               <br />
             </ul>
           </div>
@@ -123,7 +123,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
               echo "<img src='{$item['image1_path']}' alt='Item Image' />";
               echo "<h3>{$item['item_name']}</h3>";
               echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
-              echo "<button onclick=\"location.href = 'item_detail.php';\" class='btn'>View More</button>";
+              echo "<button onclick=\"location.href = 'item_detail.php?item_id={$item['item_id']}';\" class='btn'>View More</button>";
               echo "</div>";
           }
           ?>
@@ -198,8 +198,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         const items = document.querySelectorAll('.grid-item');
         items.forEach((item) => {
           const itemPrice = parseFloat(item.dataset.price);
-          const [min, max] = priceRange.split('-').map((val) => parseFloat(val.trim()));
-          
+          const [min, max] = priceRange.split('-').map((val, index) => index === 0 ? parseFloat(val.replace('RM', '')) : parseFloat(val.trim()));
           if (itemPrice >= min && itemPrice <= max) {
             item.style.display = 'block';
           } else {
