@@ -50,7 +50,7 @@ $items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
                 </button>
                 <div class="dropdown-content">
                     <a href="homepage.php">Back to Homepage</a>
-                    <a href="#">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
