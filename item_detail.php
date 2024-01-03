@@ -28,49 +28,6 @@ if (isset($_GET['item_id'])) {
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <style>
-      .cart-icons a {
-          color: white;
-          text-decoration: none; /* Optional: Remove underline from the link */
-      }
-      /* Update the CSS in your existing style.css or in a separate CSS file */
-      body {
-          margin: 0;
-          padding: 0;
-      }
-
-      main {
-          padding-top: 50; /* Remove or set to 0 to eliminate any top padding */
-      }
-
-      .item-details-container {
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          height: calc(100vh - 20px); /* Adjust considering the space at the top */
-          padding-top: 70px; /* Adjust to add space above the item details */
-      }
-
-      .item-details {
-          text-align: center;
-          max-width: 80%; /* Adjust the maximum width of the item details */
-          /* Add any additional styles for the item details */
-      }
-       /* Add styles for the Add to Cart button */
-      .add-to-cart-btn {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .add-to-cart-btn:hover {
-        background-color: #45a049;
-      }
-  </style>
   </head>
   <body>
     <header>
@@ -78,7 +35,6 @@ if (isset($_GET['item_id'])) {
         <img src="icons/logo.svg" height="100" width="100" />
         <h1>TradeCycle</h1>
       </div>
-   
       <div class="username-icon-container">
         <div class="dropdown">
           <button class="dropbtn">
@@ -97,57 +53,43 @@ if (isset($_GET['item_id'])) {
             </a>
         </div>
       </div>
-    
-    
     </header>
-  
- 
-
-    <main>
-      <div class="spacing">
-      </div>
-      <!-- <div class ="mainContainer">
-        <div class="scrolling-container">
-            <div class="item-grid-container">
-              <div class="item-grid-item">
-                <img src="icons/chair.jpeg" alt="">
-              </div>
-              <div class="item-grid-item">
-                <img src="icons/chair.jpeg" alt="">
-              </div>
-              <div class="item-grid-item">
-                <img src="icons/chair.jpeg" alt="">
-              </div>
-              
-            </div>
-          </div>
-          <div class>
-
-          </div>
-         -->
-    </div>
+    <main class="item-details-main">
     <div class="item-details-container">
             <?php if ($item): ?>
-                <div class="item-details">
+                <div class="item-details-pic">
                     <!-- Item details display -->
+                    <div class="pic-container">
                     <img src="<?php echo $item['image1_path']; ?>" alt="Item Image">
+                    </div>
+                    <div class="pic-container">
+                    <img src="<?php echo $item['image2_path']; ?>" alt="Item Image">
+                    </div>                    
+                    <div class="pic-container">
+                    <img src="<?php echo $item['image3_path']; ?>" alt="Item Image">
+                    </div>                 
+                  </div>  
+                    <div class="item-details-namebutton">
                     <h2><?php echo $item['item_name']; ?></h2>
-                    <p>Description: <?php echo $item['item_desc']; ?></p>
+                    <button type="submit" class="add-to-cart-btn">Add to Cart +</button>
+                   </div>
+                    <div class="item-details-desc">
                     <p>Price: RM <?php echo $item['item_price']; ?></p>
+                    <p>Quantity: <?php echo $item['item_quantity']; ?></p>
+                    <p>Description: <?php echo $item['item_desc']; ?></p>
+                    <!--  -->
                     <form action="add_to_cart.php" method="POST">
                       <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>">
                       <input type="hidden" name="item_name" value="<?php echo $item['item_name']; ?>">
                       <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>">
                       <input type="hidden" name="cart_qty" value="1">
                       <!-- Other hidden inputs if needed -->
-                      <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                   </form>
-
                 </div>
             <?php else: ?>
                 <p>Item not found</p>
             <?php endif; ?>
-        </div>
+        </div> 
     </main>
 
     <footer>
