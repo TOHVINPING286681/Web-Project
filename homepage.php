@@ -2,7 +2,7 @@
 include('dbconnect.php');
 
 // Fetch item name, price, category, and image path from the database
-$stmt = $pdo->prepare("SELECT item_name, item_price, item_category, image1_path FROM tbl_items");
+$stmt = $pdo->prepare("SELECT item_name, item_id, item_price, item_category, image1_path FROM tbl_items");
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -123,7 +123,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
               echo "<img src='{$item['image1_path']}' alt='Item Image' />";
               echo "<h3>{$item['item_name']}</h3>";
               echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
-              echo "<button onclick=\"location.href = 'item_detail.html';\" class='btn'>View More</button>";
+              echo "<button onclick=\"location.href = 'item_detail.php?item_id={$item['item_id']}';\" class='btn'>View More</button>";
               echo "</div>";
           }
           ?>
