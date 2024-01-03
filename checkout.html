@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file if needed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    body {
+        background-color: #fff;    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set minimum height of the viewport */
+}
+    
+    
+    /* header {
+        background-color: #f8f9fa;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    } */
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo-container img {
+        margin-right: 10px;
+    }
+    
+    .cart-icons {
+        font-size: 24px;
+    }
+    
+    .payment-success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Fill remaining vertical space */
+    margin-top: 0px;
+    margin-bottom: 50px; /* Adjust the margin for vertical positioning */
+}
+
+.payment-success h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 5px; /* Reduce margin for h1 */
+}
+
+.payment-success p {
+    font-size: 1.2em;
+    color: #666;
+    margin: 0;
+}
+    
+    footer {
+        /* background-color: #f8f9fa; */
+       text-align: center;
+    padding: 10px;
+    width: 100%;
+    flex-shrink: 0;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+          <img src="icons/logo.svg" height="100" width="100" />
+          <h1>TradeCycle</h1>
+        </div>
+     
+        <div class="username-icon-container">
+          <div class="dropdown">
+            <button class="dropbtn">
+              <p class="username1"></p>
+              <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="user_profile.php">Profile</a>
+              <a href="#">Logout</a>
+            </div>
+          </div>
+          <div class="cart">
+            <div class="cart-icons">
+              <a href="shopping_cart.php">
+                  <i class="fas fa-shopping-cart"></i>
+              </a>
+          </div>
+        </div>
+      
+      
+      </header>
+    <div class="payment-success">
+        <h1>Payment success!</h1>
+        <p>Thank you for shopping from TradeCycle.com.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+      </footer>
+</body>
+</html>
