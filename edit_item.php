@@ -56,41 +56,26 @@ if (isset($_GET['item_id'])) {
     </header>
     <main class="item-details-main">
     <div class="item-details-container">
-            <?php if ($item): ?>
-                <div class="item-details-pic">
-                    <!-- Item details display -->
-                    <div class="pic-container">
-                    <img src="<?php echo $item['image1_path']; ?>" alt="Item Image">
-                    </div>
-                    <div class="pic-container">
-                    <img src="<?php echo $item['image2_path']; ?>" alt="Item Image">
-                    </div>                    
-                    <div class="pic-container">
-                    <img src="<?php echo $item['image3_path']; ?>" alt="Item Image">
-                    </div>                 
-                  </div>  
-                    <!-- <div class="item-details-namebutton">
-                    <h2><?php echo $item['item_name']; ?></h2>
-                    <button type="submit" class="add-to-cart-btn">Add to Cart +</button>
-                   </div>
-                    <div class="item-details-desc">
-                    <p>Price: RM <?php echo $item['item_price']; ?></p>
-                    <p>Quantity: <?php echo $item['item_quantity']; ?></p>
-                    <p>Description: <?php echo $item['item_desc']; ?></p>
-]                    <form action="add_to_cart.php" method="POST">
-                      <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>">
-                      <input type="hidden" name="item_name" value="<?php echo $item['item_name']; ?>">
-                      <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>">
-                      <input type="hidden" name="cart_qty" value="1">
-\                  </form>
-                </div> -->
-                <form
-        name="addItemForm"
-        action="add_item.php"
-        class="add-item-form"
-        method="POST"
-        enctype="multipart/form-data"
-      >
+      <?php if ($item): ?>
+          <div class="item-details-pic">
+              <!-- Item details display -->
+              <div class="pic-container">
+              <img src="<?php echo $item['image1_path']; ?>" alt="Item Image">
+              </div>
+              <div class="pic-container">
+              <img src="<?php echo $item['image2_path']; ?>" alt="Item Image">
+              </div>                    
+              <div class="pic-container">
+              <img src="<?php echo $item['image3_path']; ?>" alt="Item Image">
+              </div>                 
+            </div>  
+          <form
+            name="addItemForm"
+            action="add_item.php"
+            class="add-item-form"
+            method="POST"
+            enctype="multipart/form-data"
+          >
         <div class="input-add-container">
           <label for="itemName">Item name</label>
           <input type="text" id="itemName" name="itemName" class="wide-input" />
@@ -180,10 +165,7 @@ if (isset($_GET['item_id'])) {
                 <p>Item not found</p>
             <?php endif; ?>
         </div> 
-
-        
     </main>
-
     <footer>
       <p>&copy; 2023 TradeCycle. All rights reserved.</p>
     </footer>
@@ -213,24 +195,6 @@ if (isset($_GET['item_id'])) {
                 }
             });
         });
-      
-      // function addToCart(itemId, itemPrice) {
-      //   // Assuming you'd perform an AJAX request to add the item to the cart
-      //   // You can use Fetch API or XMLHttpRequest here to send data to add_to_cart.php
-      //   // For simplicity, here's a sample using Fetch API
-
-      //   fetch(`add_to_cart.php?item_id=${itemId}&cart_price=${itemPrice}&cart_qty=1`, {
-      //       method: 'POST',
-      //       // Additional headers or body if needed
-      //   })
-      //   .then(response => {
-      //       // Handle the response or perform further actions if required
-      //       console.log('Item added to cart!');
-      //   })
-      //   .catch(error => {
-      //       console.error('Error adding item to cart:', error);
-      //   });
-    
     </script>
   </body>
   </html>
