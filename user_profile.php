@@ -65,6 +65,7 @@ $items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
        
       </div>
       </div>
+      <div class="wrapper-container">
       <div class="item-container">
       <?php
             foreach ($items as $item) {
@@ -72,11 +73,12 @@ $items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
                 echo "<img src='{$item['image1_path']}' alt='Item Image' />";
                 echo "<h3>{$item['item_name']}</h3>";
                 echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
-                echo "<button onclick=\"location.href = 'item_detail.php?item_id={$item['item_id']}';\" class='btn'>View More</button>";
+                echo "<button onclick=\"location.href = 'edit_item.php?item_id={$item['item_id']}';\" class='editBtn'>Edit</button>";
                 echo "</div>";
             }
         ?>
         </div>
+      </div>
       
   <footer>
     <p>&copy; 2023 TradeCycle. All rights reserved.</p>
