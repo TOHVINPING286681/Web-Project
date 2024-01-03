@@ -1,12 +1,13 @@
 <?php
-include('dbconnect.php'); // Include your database connection
+include('dbconnect.php');
 
-// Fetch item name and price from the database
-$stmt = $pdo->prepare("SELECT item_name, item_price, image1_path FROM tbl_items");
+// Fetch item name, price, category, and image path from the database
+$stmt = $pdo->prepare("SELECT item_name, item_price, item_category, image1_path FROM tbl_items");
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,13 +54,15 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <div class="categories">
             <ul class="filter-categories">
               <p id="categories">Categories</p>
+              <li>All</li>
+              <br />
               <li>Accessories</li>
               <br />
               <li>Computer</li>
               <br />
-              <li>Women's Fashion</li>
+              <li>Women Fashion</li>
               <br />
-              <li>Men's Fashion</li>
+              <li>Men Fashion</li>
               <br />
               <li>Mobile Phone</li>
               <br />
@@ -92,15 +95,15 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </ul>
             <p id="categories">Price Range</p>
             <ul class="price-range">
-              <li>RM 1-9</li>
+              <li>1-9</li>
               <br />
-              <li>RM 10-100</li>
+              <li>10-100</li>
               <br />
-              <li>RM 101-500</li>
+              <li>101-500</li>
               <br />
-              <li>RM 501-1000</li>
+              <li>501-1000</li>
               <br />
-              <li>RM 1000++</li>
+              <li>1000++</li>
               <br />
             </ul>
           </div>
@@ -114,16 +117,16 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </button>
         </div>
         <div class="grid-container">
-            <?php
+          <?php
             foreach ($items as $item) {
-                echo "<div class='grid-item'>";
-                echo "<img src='{$item['image1_path']}' alt='Item Image' />";
-                echo "<h3>{$item['item_name']}</h3>";
-                echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
-                echo "<button onclick=\"location.href = 'item_detail.html';\" class='btn'>View More</button>";
-                echo "</div>";
-            }
-            ?>
+              echo "<div class='grid-item' data-category='{$item['item_category']}' data-price='{$item['item_price']}'>";
+              echo "<img src='{$item['image1_path']}' alt='Item Image' />";
+              echo "<h3>{$item['item_name']}</h3>";
+              echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
+              echo "<button onclick=\"location.href = 'item_detail.html';\" class='btn'>View More</button>";
+              echo "</div>";
+          }
+          ?>
       </div>
     </main>
 
@@ -145,7 +148,49 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
           })
           .catch((error) => console.error('Error fetching username:', error));
+          
+    // Filter logic
+    document.querySelectorAll('.filter-categories li').forEach((category) => {
+      category.addEventListener('click', function () {
+        const categoryName = category.textContent.trim();
+        filterItemsByCategory(categoryName);
       });
+    });
+
+    document.querySelectorAll('.price-range li').forEach((priceRange) => {
+      priceRange.addEventListener('click', function () {
+        const priceText = priceRange.textContent.trim();
+        filterItemsByPrice(priceText);
+      });
+    });
+
+    function filterItemsByCategory(category) {
+      const items = document.querySelectorAll('.grid-item');
+      items.forEach((item) => {
+        const itemCategory = item.dataset.category;
+        
+        if (category === 'All' || itemCategory === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function filterItemsByPrice(priceRange) {
+      const items = document.querySelectorAll('.grid-item');
+      items.forEach((item) => {
+        const itemPrice = parseFloat(item.dataset.price);
+        const [min, max] = priceRange.split('-').map((val) => parseFloat(val.trim()));
+        
+        if (itemPrice >= min && itemPrice <= max) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  });
     </script>
   </body>
 </html>
