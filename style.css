@@ -361,6 +361,7 @@ header h1 {
   margin: 0 auto;
   border-radius: 20px;
   margin-top: 15px;
+  padding-bottom: 30px;
 }
 
 .item {
@@ -407,6 +408,24 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
+
+.grid-item .editBtn{
+  width: 125px;
+  background: transparent;
+  color: #000000;
+  border: none;
+  text-decoration: underline;
+  border-radius: 3px;
+  padding: 8px 5px;
+  font-size: 16px;
+  font-weight: 200;
+  cursor: pointer;
+  margin: 10px auto 0;
+}
+
+.editBtn:hover {
+  color: #ccc;
+  }
 
 /* add_item.html */
 .body-add-item {
@@ -922,4 +941,40 @@ align-items: center;
 .add-to-cart-btn:hover {
 background-color: #ccc;
 }
+
+/* edit_item.php */
+.update-item-button {
+  display: block;
+  width: 200px;
+  margin: 20px 10px 0 0; /* Adjust the margins as needed */
+  padding: 10px;
+  background-color: #bca37f;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.ud-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+}
+
+.ud-container .dlt-button {
+  align-items: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.ud-container i {
+  color: #ccc;
+  cursor: pointer;
+  height: 150px; /* Increase the height as needed */
+  width: 150px; /* Increase the width as needed */
+  background-color: transparent;
+  border: 1px transparent;
+}
+
 
