@@ -1,3 +1,33 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+include 'dbconnect.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page or take appropriate action
+    header("Location: login.php");
+    exit();
+}
+
+$userID = $_SESSION['user_id'];
+
+// Fetch user information, including user_id, username, and image path
+$stmtUser = $pdo->prepare("SELECT user_id, user_name FROM tbl_users WHERE user_id = :user_id");
+$stmtUser->bindParam(':user_id', $userID, PDO::PARAM_INT);
+$stmtUser->execute();
+$userInfo = $stmtUser->fetch(PDO::FETCH_ASSOC);
+
+// Fetch items for the specific user
+$stmtItems = $pdo->prepare("SELECT item_id, item_name, item_price, item_category, image1_path FROM tbl_items WHERE user_id = :user_id");
+$stmtItems->bindParam(':user_id', $userID, PDO::PARAM_INT);
+$stmtItems->execute();
+$items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,21 +66,16 @@
       </div>
       </div>
       <div class="item-container">
-        <div class="item">
-          <img src="icons/table.jpg" alt="Item image" class="item-image">
-          <h3 class="item-name">Item Name 1</h3>
-          <h4 class="item-price">RM 45</h4>
-        </div>
-        <div class="item">
-          <img src="icons/chair.jpeg" alt="Item image" class="item-image">
-          <h3 class="item-name">Item Name 2</h3>
-          <h4 class="item-price">RM 45</h4>
-        </div>
-        <div class="item">
-          <img src="icons/tv.jpeg" alt="Item image" class="item-image">
-          <h3 class="item-name">Item Name 3</h3>
-          <h4 class="item-price">RM 45</h4>
-        </div>
+      <?php
+            foreach ($items as $item) {
+                echo "<div class='grid-item' data-category='{$item['item_category']}' data-price='{$item['item_price']}'>";
+                echo "<img src='{$item['image1_path']}' alt='Item Image' />";
+                echo "<h3>{$item['item_name']}</h3>";
+                echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
+                echo "<button onclick=\"location.href = 'item_detail.php?item_id={$item['item_id']}';\" class='btn'>View More</button>";
+                echo "</div>";
+            }
+        ?>
         </div>
       
   <footer>

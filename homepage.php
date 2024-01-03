@@ -35,7 +35,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <i class="fas fa-user"></i>
           </button>
           <div class="dropdown-content">
-            <a href="user_profile.html">Profile</a>
+            <a href="user_profile.php">Profile</a>
             <a href="#">Logout</a>
           </div>
         </div>
