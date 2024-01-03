@@ -7,7 +7,7 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* index */
+/* Index.html */
 .body-index {
   background-color: #c9d6ff;
   background: linear-gradient(to right, #e2e2e2, #c9d6ff);
@@ -232,7 +232,7 @@
   transform: translateX(200%);
 }
 
-/* profile */
+/* user_profile.html */
 .body-profile {
   font-family: sans-serif;
   margin: 0;
@@ -408,7 +408,7 @@ footer {
   align-items: center;
 }
 
-/* add item page */
+/* add_item.html */
 .body-add-item {
   background-color: #fff2d8;
   font-family: sans-serif;
@@ -500,7 +500,6 @@ main {
   margin-right: 20px;
 }
 
-/* Remove flex: 1 from input-row input */
 .input-row input {
   height: 30px;
   padding: 5px;
@@ -545,8 +544,7 @@ main {
   font-size: 20px;
 }
 
-/* Dropdown styles */
-.dropdownCategory {
+.dropdownCategory {/* Dropdown styles */
   position: relative;
   display: inline-block;
 }
@@ -591,11 +589,12 @@ main {
   display: block;
 }
 
-/* add_cart */
+/* add_cart.html */
 .add-cart-main h1 {
   font-weight: 600;
   padding: 30px;
 }
+
 .add-cart-main p {
   font-weight: 100;
   display: flex;
@@ -671,7 +670,7 @@ main {
   padding-top: 10px;
 }
 
-/* homepage */
+/* homepage.php */
 .cart-icons {
   color: white;
 }
@@ -738,12 +737,10 @@ main {
 .price-range li {
   padding: 5px 10px;
   background-color: transparent;
-  /* margin-bottom: 5px; */
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
   border: 1px solid transparent;
-  /* min-width: 150px; */
   text-align: left;
   font-weight: 100;
   color: #000000;
@@ -834,3 +831,95 @@ main {
   cursor: pointer;
   margin: 10px auto 0;
 }
+
+/* item_details.php */
+.cart-icons a {
+  color: white;
+  text-decoration: none; /* Optional: Remove underline from the link */
+}
+/* Update the CSS in your existing style.css or in a separate CSS file */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.item-details-main {
+  padding-top: 50; /* Remove or set to 0 to eliminate any top padding */
+}
+
+.item-details-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Use min-height to ensure the container takes at least 100% of the viewport height */
+  padding-top: 70px;
+  padding-left: 30px;
+  overflow-y: auto;
+}
+
+.item-details-pic {
+display: flex;  
+justify-content: space-evenly;
+max-width: 100%; /* Adjust the maximum width of the item details */
+padding: 40px;
+}
+
+.pic-container {
+  background-color: #fff;
+  width: 450px; /* Set a fixed width for the container */
+  height: 350px; /* Set a fixed height for the container */
+  max-width: 100%; /* Ensure the container doesn't exceed its parent's width */
+  max-height: 100%; /* Ensure the container doesn't exceed its parent's height */
+  overflow: hidden; /* Hide any overflow if the image is larger than the container */
+  padding: 30px;
+  justify-content: space-around;
+}
+
+.item-details-pic img {
+  width: fit-content; /* Make the image fill the container's width */
+  height: 280px; /* Allow the image to maintain its aspect ratio */
+  display: block; /* Remove any extra space below the image */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.item-details-namebutton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.item-details-desc{
+ gap: 40px;
+}
+
+.item-details-namebutton h2{
+  color: #113946;
+  font-size: 65px;
+  padding-bottom: 20px;
+}
+
+.item-details-desc p{
+  color: #000000;
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
+.add-to-cart-btn {
+padding: 10px 20px;
+background-color: #BCA37F;
+color: white;
+border: none;
+border-radius: 0;
+font-size: 20px;
+font-weight: 300;
+cursor: pointer;
+transition: background-color 0.3s;
+align-items: center;
+}
+
+.add-to-cart-btn:hover {
+background-color: #ccc;
+}
+
