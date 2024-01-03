@@ -112,7 +112,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="rightContainer">
         <div class="search-container">
           <input type="text" class="search-input" placeholder="Search..." />
-          <button class="search-button" type="submit">
+          <button class="search-button" type="button">
             <i class="fas fa-search"></i>
           </button>
         </div>
@@ -123,7 +123,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
               echo "<img src='{$item['image1_path']}' alt='Item Image' />";
               echo "<h3>{$item['item_name']}</h3>";
               echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
-              echo "<button onclick=\"location.href = 'item_detail.php?item_id={$item['item_id']}';\" class='btn'>View More</button>";
+              echo "<button onclick=\"location.href = 'item_detail.php';\" class='btn'>View More</button>";
               echo "</div>";
           }
           ?>
@@ -148,49 +148,80 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
           })
           .catch((error) => console.error('Error fetching username:', error));
+
+      // Filter logic
+      document.querySelectorAll('.filter-categories li').forEach((category) => {
+        category.addEventListener('click', function () {
+          const categoryName = category.textContent.trim();
+          filterItemsByCategory(categoryName);
+        });
+      });
+
+      document.querySelectorAll('.price-range li').forEach((priceRange) => {
+        priceRange.addEventListener('click', function () {
+          const priceText = priceRange.textContent.trim();
+          filterItemsByPrice(priceText);
+        });
+      });
+
+      document.querySelector('.search-input').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          const searchTerm = document.querySelector('.search-input').value.trim();
+          filterItemsBySearch(searchTerm);
+        }
+      });
+
+      document.querySelector('.search-input').addEventListener('input', function () {
+        const searchTerm = document.querySelector('.search-input').value.trim();
+        filterItemsBySearch(searchTerm);
+      });
+
+      document.querySelector('.search-button').addEventListener('click', function () {
+        const searchTerm = document.querySelector('.search-input').value.trim();
+        filterItemsBySearch(searchTerm);
+      });
+
+      function filterItemsByCategory(category) {
+        const items = document.querySelectorAll('.grid-item');
+        items.forEach((item) => {
+          const itemCategory = item.dataset.category;
           
-    // Filter logic
-    document.querySelectorAll('.filter-categories li').forEach((category) => {
-      category.addEventListener('click', function () {
-        const categoryName = category.textContent.trim();
-        filterItemsByCategory(categoryName);
-      });
+          if (category === 'All' || itemCategory === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+
+      function filterItemsByPrice(priceRange) {
+        const items = document.querySelectorAll('.grid-item');
+        items.forEach((item) => {
+          const itemPrice = parseFloat(item.dataset.price);
+          const [min, max] = priceRange.split('-').map((val) => parseFloat(val.trim()));
+          
+          if (itemPrice >= min && itemPrice <= max) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+
+      function filterItemsBySearch(searchTerm) {
+        const items = document.querySelectorAll('.grid-item');
+        items.forEach((item) => {
+          const itemName = item.querySelector('h3').textContent;
+          const regex = new RegExp(searchTerm.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i');
+
+          if (itemName.match(regex)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
     });
-
-    document.querySelectorAll('.price-range li').forEach((priceRange) => {
-      priceRange.addEventListener('click', function () {
-        const priceText = priceRange.textContent.trim();
-        filterItemsByPrice(priceText);
-      });
-    });
-
-    function filterItemsByCategory(category) {
-      const items = document.querySelectorAll('.grid-item');
-      items.forEach((item) => {
-        const itemCategory = item.dataset.category;
-        
-        if (category === 'All' || itemCategory === category) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-
-    function filterItemsByPrice(priceRange) {
-      const items = document.querySelectorAll('.grid-item');
-      items.forEach((item) => {
-        const itemPrice = parseFloat(item.dataset.price);
-        const [min, max] = priceRange.split('-').map((val) => parseFloat(val.trim()));
-        
-        if (itemPrice >= min && itemPrice <= max) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-  });
     </script>
   </body>
 </html>
