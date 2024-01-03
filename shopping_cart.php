@@ -46,7 +46,7 @@ $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </button>
           <div class="dropdown-content">
             <a href="user_profile.php">Profile</a>
-            <a href="#">Logout</a>
+           <a href="logout.php">Logout</a>
           </div>
         </div>
         <div class="cart">
