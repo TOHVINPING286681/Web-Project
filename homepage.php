@@ -119,7 +119,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo "<div class='grid-item'>";
                 echo "<img src='{$item['image1_path']}' alt='Item Image' />";
                 echo "<h3>{$item['item_name']}</h3>";
-                echo "<p id='mainPrice'>Price: RM {$item['item_price']}</p>";
+                echo "<p id='mainPrice'>RM {$item['item_price']}</p>";
                 echo "<button onclick=\"location.href = 'item_detail.html';\" class='btn'>View More</button>";
                 echo "</div>";
             }
