@@ -176,6 +176,22 @@
     </footer>
 
     <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fetch the username using an AJAX request
+        fetch('profile.php')
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.user_name) {
+              // Make sure to use the correct key here
+              // Update the username in the dropdown
+              document.querySelector('.username1').innerText = data.user_name;
+            } else {
+              console.error('Error fetching username:', data.error);
+            }
+          })
+          .catch((error) => console.error('Error fetching username:', error));
+      });
+
       function previewImage(inputId, imageId) {
         const input = document.getElementById(inputId);
         const preview = document.getElementById(imageId);

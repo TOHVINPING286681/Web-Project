@@ -1,11 +1,10 @@
 <?php
-// Add this line at the beginning of your script
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 session_start();
 
 include('dbconnect.php'); // Include your database connection
+
+$itemid = $pdo->prepare("SELECT item_id FROM tbl_items");
 
 // Function to handle file uploads
 function handleFileUpload($fileInput, $targetDir) {
@@ -72,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userID = $_SESSION['user_id']; // Adjust this based on your actual session structure
 
         // Prepare and execute the SQL query to insert data into tbl_items
-        $stmt = $pdo->prepare("INSERT INTO tbl_items (user_id, item_name, item_category, item_price, item_quantity, item_desc, item_location, item_pickup) 
-                               VALUES (:userID, :itemName, :category, :price, :quantity, :description, :location, :pickupOption)");
+        $stmt = $pdo->prepare("INSERT INTO tbl_items (user_id, item_name, item_category, item_price, item_quantity, item_desc, item_location, item_pickup, image1_path, image2_path, image3_path) 
+        VALUES (:userID, :itemName, :category, :price, :quantity, :description, :location, :pickupOption, :image1Path, :image2Path, :image3Path)");
 
         // Assuming 'location' is the name of the location input field in the HTML form
         $location = isset($_POST['location']) ? $_POST['location'] : '';
@@ -88,21 +87,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':pickupOption', $pickupOption);
 
         try {
-            $stmt->execute();
-
             // Handle file uploads for each image input
             $image1Path = handleFileUpload('image1', 'assets/items/');
             $image2Path = handleFileUpload('image2', 'assets/items/');
             $image3Path = handleFileUpload('image3', 'assets/items/');
 
-            // Redirect to a success page or perform any other action after successful item addition
-            header("Location: homepage.html?success=Item added successfully!");
+            // Add bindings for image paths
+            $stmt->bindParam(':image1Path', $image1Path);
+            $stmt->bindParam(':image2Path', $image2Path);
+            $stmt->bindParam(':image3Path', $image3Path);
+
+            $stmt->execute();
+
+            // Redirect to a success page or perform any other action after a successful item addition
+            $_SESSION['success_message'] = "Item added successfully!";
+
+            header("Location: homepage.php?success=Item Added Successful");
             exit();
+            
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     } else {
         echo "All fields are required!";
     }
+    
 }
 ?>

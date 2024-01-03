@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 02, 2024 at 08:39 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost
+-- Generation Time: Jan 03, 2024 at 04:50 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,16 +52,20 @@ CREATE TABLE `tbl_items` (
   `item_quantity` int(4) NOT NULL,
   `item_desc` varchar(255) NOT NULL,
   `item_location` varchar(50) NOT NULL,
-  `item_pickup` varchar(20) NOT NULL
+  `item_pickup` varchar(20) NOT NULL,
+  `image1_path` varchar(30) NOT NULL,
+  `image2_path` varchar(30) NOT NULL,
+  `image3_path` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_items`
 --
 
-INSERT INTO `tbl_items` (`item_id`, `user_id`, `item_name`, `item_category`, `item_price`, `item_quantity`, `item_desc`, `item_location`, `item_pickup`) VALUES
-(1, 1, 'Badminton Racket', 'Sports Equipment', 50, 1, 'Lining racket, made in China', '', 'Delivery'),
-(2, 1, 'T-shirt', 'Clothes', 20, 3, 'New T-shirts, M sized', '', 'Delivery');
+INSERT INTO `tbl_items` (`item_id`, `user_id`, `item_name`, `item_category`, `item_price`, `item_quantity`, `item_desc`, `item_location`, `item_pickup`, `image1_path`, `image2_path`, `image3_path`) VALUES
+(1, 2, 'Burger', 'Others', '20', 1, 'Best Burger', '', 'Delivery', 'assets/items/burger 3.jpeg', 'assets/items/burger 2.jpg', 'assets/items/burger 1.jpg'),
+(2, 2, 'T-shirt', 'Men\'s Fashion', '100', 10, 'Quality shirt', '', 'Delivery', 'assets/items/T-shirt.png', 'assets/items/T-shirt2.png', 'assets/items/T-shirt3.png'),
+(3, 2, 'Racket ', 'Accessories', '100', 10, 'Best Quality', '', 'Pick-up', 'assets/items/racket.jpg', 'assets/items/racket2.png', 'assets/items/racket3.png');
 
 -- --------------------------------------------------------
 
@@ -100,7 +104,8 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `name`, `user_name`, `user_email`, `user_phone`, `user_password`) VALUES
-(1, 'Abu', 'Abu1234', 'Abu123@gmail.com', '012-2332532', '$2y$10$WeMOk3V5VFyDRJyLNhVRLudVt8gKyECGZnrd9HL6olYDgE6ASz4ia');
+(1, 'Abu', 'Abu1234', 'Abu123@gmail.com', '012-2332532', '$2y$10$WeMOk3V5VFyDRJyLNhVRLudVt8gKyECGZnrd9HL6olYDgE6ASz4ia'),
+(2, 'Goh Koon Loong', 'goh_koon_loong', 'gohkoonloong@gmail.com', '0185755357', '$2y$10$L2VFoFUYt3icS5Cz13/jiOXxV1NQVIRLMp8ggn7wnezHrbbbKwpv.');
 
 --
 -- Indexes for dumped tables
@@ -145,7 +150,7 @@ ALTER TABLE `tbl_carts`
 -- AUTO_INCREMENT for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
@@ -157,7 +162,7 @@ ALTER TABLE `tbl_orders`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

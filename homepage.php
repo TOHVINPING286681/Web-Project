@@ -1,0 +1,151 @@
+<?php
+include('dbconnect.php'); // Include your database connection
+
+// Fetch item name and price from the database
+$stmt = $pdo->prepare("SELECT item_name, item_price, image1_path FROM tbl_items");
+$stmt->execute();
+$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeCycle - Homepage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="icons/logo.svg" height="100" width="100" />
+        <h1>TradeCycle</h1>
+      </div>
+
+      <div class="username-icon-container">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <p class="username1"></p>
+            <i class="fas fa-user"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="user_profile.html">Profile</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+        <div class="cart-icons">
+          <a href="add_cart.html">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main class="home-main">
+      <div class="leftContainer">
+        <div class="filter">
+          <h2 id="filter-heading">Filter</h2>
+
+          <div class="categories">
+            <ul class="filter-categories">
+              <p id="categories">Categories</p>
+              <li>Accessories</li>
+              <br />
+              <li>Computer</li>
+              <br />
+              <li>Women's Fashion</li>
+              <br />
+              <li>Men's Fashion</li>
+              <br />
+              <li>Mobile Phone</li>
+              <br />
+              <li>Beauty & Personal Care</li>
+              <br />
+              <li>Health & Suppliement</li>
+              <br />
+              <li>Baby & Kids</li>
+              <br />
+              <li>Pet Supplies</li>
+              <br />
+              <li>Furniture & Home Living</li>
+              <br />
+              <li>Gadgets</li>
+              <br />
+              <li>Photography</li>
+              <br />
+              <li>Sports Equipment</li>
+              <br />
+              <li>Books & Stationaries</li>
+              <br />
+              <li>Toys</li>
+              <br />
+              <li>Cars & Motorbikes Accessories</li>
+              <br />
+              <li>Home Appliances</li>
+              <br />
+              <li>Others</li>
+              <br /><br />
+            </ul>
+            <p id="categories">Price Range</p>
+            <ul class="price-range">
+              <li>RM 1-9</li>
+              <br />
+              <li>RM 10-100</li>
+              <br />
+              <li>RM 101-500</li>
+              <br />
+              <li>RM 501-1000</li>
+              <br />
+              <li>RM 1000++</li>
+              <br />
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="rightContainer">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search..." />
+          <button class="search-button" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div class="grid-container">
+            <?php
+            foreach ($items as $item) {
+                echo "<div class='grid-item'>";
+                echo "<img src='{$item['image1_path']}' alt='Item Image' />";
+                echo "<h3>{$item['item_name']}</h3>";
+                echo "<p id='mainPrice'>Price: RM {$item['item_price']}</p>";
+                echo "<button onclick=\"location.href = 'item_detail.html';\" class='btn'>View More</button>";
+                echo "</div>";
+            }
+            ?>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fetch the username using an AJAX request
+        fetch('profile.php')
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.user_name) {
+              // Make sure to use the correct key here
+              // Update the username in the dropdown
+              document.querySelector('.username1').innerText = data.user_name;
+            } else {
+              console.error('Error fetching username:', data.error);
+            }
+          })
+          .catch((error) => console.error('Error fetching username:', error));
+      });
+    </script>
+  </body>
+</html>
