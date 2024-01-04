@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $price = $_POST['price'];
         $quantity = $_POST['quantity'];
         $description = $_POST['description'];
+        $location = $_POST['location'];
         $pickupOption = $_POST['pickup_option'];
 
         // Here, include logic to get the user ID (for example, assuming it's stored in the session)

@@ -1,6 +1,89 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include('dbconnect.php'); // Include your database connection
 
+// Backend logic for updating and deleting items
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Delete item logic
+  if (isset($_POST['delete_item']) && isset($_GET['item_id'])) {
+    $itemId = $_GET['item_id'];
+
+    // Fetch item details based on the item ID
+    $stmt = $pdo->prepare("SELECT * FROM tbl_items WHERE item_id = :itemId");
+    $stmt->bindParam(':itemId', $itemId);
+    $stmt->execute();
+    $item = $stmt->fetch(PDO::FETCH_ASSOC);
+
+     // Delete images from the folder
+     $imagePaths = [
+      $item['image1_path'],
+      $item['image2_path'],
+      $item['image3_path'],
+      // Add more paths if needed
+      ];
+
+      foreach ($imagePaths as $imagePath) {
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+      }
+
+    // Delete the item from the database
+    $deleteStmt = $pdo->prepare("DELETE FROM tbl_items WHERE item_id = :itemId");
+    $deleteStmt->bindParam(':itemId', $itemId);
+    $deleteStmt->execute();
+    
+    // Redirect to a page after deletion (you can customize this)
+    header("Location: user_profile.php");
+    exit();
+  }
+  // Update item logic
+  if (isset($_GET['item_id'])) {
+    $itemId = $_GET['item_id'];
+
+    // Fetch item details based on the item ID
+    $stmt = $pdo->prepare("SELECT * FROM tbl_items WHERE item_id = :itemId");
+    $stmt->bindParam(':itemId', $itemId);
+    $stmt->execute();
+    $item = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($item) {
+      // Get data from the form
+      $itemName = $_POST['itemName'];
+      $category = $_POST['category'];
+      $price = $_POST['price'];
+      $quantity = $_POST['quantity'];            
+      $description = $_POST['description'];
+      $location = isset($_POST['location']) ? $_POST['location'] : ''; // Default to empty string if not set
+      $pickupOption = isset($_POST['pickup_option']) ? $_POST['pickup_option'] : ''; // Default to empty string if not set
+
+
+      // Update the item in the database
+      $updateStmt = $pdo->prepare("UPDATE tbl_items SET item_name = :itemName, item_category = :category, item_price = :price, item_quantity = :quantity, item_desc = :description, item_location = :location, item_pickup = :pickupOption WHERE item_id = :itemId");
+      $updateStmt->bindParam(':itemId', $itemId);
+      $updateStmt->bindParam(':itemName', $itemName);
+      $updateStmt->bindParam(':category', $category);
+      $updateStmt->bindParam(':price', $price);
+      $updateStmt->bindParam(':quantity', $quantity);
+      $updateStmt->bindParam(':description', $description);
+      $updateStmt->bindParam(':location', $location);
+      $updateStmt->bindParam(':pickupOption', $pickupOption);
+      $updateStmt->execute();
+
+      // Redirect to the item details page
+      header("Location: item_detail.php?item_id=$itemId");
+      exit();
+    } else {
+      // Handle case when item ID is not found
+      echo "Item not found";
+      exit();
+    }
+  }
+}
+
+// Fetch item details based on the item ID
 if (isset($_GET['item_id'])) {
     $itemId = $_GET['item_id'];
 
@@ -71,14 +154,14 @@ if (isset($_GET['item_id'])) {
             </div>  
           <form
             name="addItemForm"
-            action="add_item.php"
+            action="?item_id=<?php echo $item['item_id']; ?>"
             class="add-item-form"
             method="POST"
             enctype="multipart/form-data"
           >
         <div class="input-add-container">
           <label for="itemName">Item name</label>
-          <input type="text" id="itemName" name="itemName" class="wide-input" />
+          <input type="text" id="itemName" name="itemName" class="wide-input" value="<?php echo $item['item_name']; ?>" />
         </div>
         <div class="input-add-container">
           <label for="category">Category</label>
@@ -112,58 +195,40 @@ if (isset($_GET['item_id'])) {
           </select>
           <div class="input-row">
             <label for="price">Price</label>
-            <input type="text" id="price" name="price" class="wide-input" />
+            <input type="text" id="price" name="price" class="wide-input" value="<?php echo $item['item_price']; ?>" />
           </div>
           <div class="input-row">
             <label for="quantity">Quantity</label>
-            <input
-              type="text"
-              id="quantity"
-              name="quantity"
-              class="wide-input"
-            />
+            <input type="text" id="quantity" name="quantity" class="wide-input" value="<?php echo $item['item_quantity']; ?>" />
           </div>
         </div>
         <div class="input-add-container">
           <label for="description">Description of item</label>
-          <textarea
-            id="description"
-            name="description"
-            class="wide-input"
-          ></textarea>
+          <textarea id="description" name="description" class="wide-input"><?php echo $item['item_desc']; ?></textarea>
         </div>
         <div class="input-add-container location-container">
           <label for="location">Location</label>
-          <input type="text" id="location" />
+          <input type="text" id="location" name="location" value="<?php echo $item['item_location']; ?>" />
           <div class="radio-group">
             <label for="pickUp">Pick Up</label>
-            <input
-              type="radio"
-              id="pickUp"
-              name="pickup_option"
-              value="Pick-up"
-            />
+            <input type="radio" id="pickUp" name="pickup_option" value="Pick-up" <?php echo ($item['item_pickup'] == 'Pick-up') ? 'checked' : ''; ?> />
             <label for="delivery">Delivery</label>
-            <input
-              type="radio"
-              id="delivery"
-              name="pickup_option"
-              value="Delivery"
-            />
+            <input type="radio" id="delivery" name="pickup_option" value="Delivery" <?php echo ($item['item_pickup'] == 'Delivery') ? 'checked' : ''; ?> />
+        </div>
           </div>
         </div>
         <div class="ud-container">
-    <button type="submit" class="update-item-button">Update Item</button>
-   <div class="dlt-button">
-   <i class="bi bi-trash-fill"></i>
-   </div>
-</div>
-
-
+          <button type="submit" class="update-item-button">Update Item</button>
+          <!-- Using a trash icon for the delete button -->
+          <input type="hidden" id="deleteItemInput" name="delete_item" value="" />
+          <a href="javascript:void(0);" onclick="deleteItem()" class="delete-item-icon">
+            <i class="bi bi-trash-fill"></i>
+          </a>
+        </div>
       </form>
-            <?php else: ?>
-                <p>Item not found</p>
-            <?php endif; ?>
+        <?php else: ?>
+            <p>Item not found</p>
+        <?php endif; ?>
         </div> 
     </main>
     <footer>
@@ -184,17 +249,22 @@ if (isset($_GET['item_id'])) {
             }
           })
           .catch((error) => console.error('Error fetching username:', error));
-
-         const itemDetailsContainer = document.querySelector('.item-details-container');
-            itemDetailsContainer.addEventListener('click', function (event) {
-                const addToCartBtn = event.target.closest('.add-to-cart-btn');
-                if (addToCartBtn) {
-                    const itemId = addToCartBtn.dataset.itemId;
-                    const itemPrice = addToCartBtn.dataset.itemPrice;
-                    addToCart(itemId, itemPrice);
-                }
-            });
         });
+        // Assuming this is your JavaScript code for deletion
+        function deleteItem() {
+            var confirmation = confirm("Are you sure you want to delete this item?");
+            if (confirmation) {
+                // Assuming you have an input field with the id 'deleteItemInput'
+                var deleteItemInput = document.getElementById('deleteItemInput');
+                
+                // Checking if the element exists before setting its value
+                if (deleteItemInput) {
+                    deleteItemInput.value = 'delete';
+                    document.forms['addItemForm'].submit();
+                }
+            }
+        }
+
     </script>
-  </body>
+  </body> 
   </html>

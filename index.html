@@ -40,7 +40,7 @@
               id="username"
               name="username"
               required
-              minlength="5"
+              minlength="4"
               title="Please enter at least 5 characters."
             />
           </div>
@@ -86,13 +86,7 @@
       </div>
       <!-- Sign In Form -->
       <div class="form-container sign-in">
-        <form
-          name="loginForm"
-          action="login.php"
-          method="POST"
-          novalidate
-          onsubmit="return validateLoginForm()"
-        >
+        <form name="loginForm" action="login.php" method="POST">
           <h1>Sign In</h1>
           <span>Welcome back to TradeCycle</span>
           <div class="input-container">
@@ -102,6 +96,8 @@
               placeholder="Email"
               id="email_login"
               name="email_login"
+              required
+              title="Please fill in email to sign in."
             />
           </div>
           <div class="input-container">
@@ -111,10 +107,11 @@
               placeholder="Password"
               id="pass_login"
               name="pass_login"
+              required
+              title="Please fill in password to sign in."
             />
           </div>
           <button type="submit">Sign In</button>
-          <a href="#">Forget Your Password?</a>
           <div class="error-message" id="login-error-message"></div>
         </form>
       </div>
@@ -156,9 +153,8 @@
       if (successMessage) {
         // Display success message (you can customize this)
         alert(successMessage);
+      } else {
       }
     </script>
-    <script src="script.js"></script>
-    <script></script>
   </body>
 </html>
