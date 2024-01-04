@@ -1,10 +1,20 @@
 <?php
 include('dbconnect.php');
 
+$itemsPerPage = 12;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$offset = ($page - 1) * $itemsPerPage;
+
 // Fetch item name, price, category, and image path from the database
-$stmt = $pdo->prepare("SELECT item_name, item_id, item_price, item_category, image1_path FROM tbl_items");
+$stmt = $pdo->prepare("SELECT item_name, item_id, item_price, item_category, image1_path FROM tbl_items LIMIT :offset, :itemsPerPage");
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+$stmt->bindParam(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$totalItemsStmt = $pdo->query("SELECT COUNT(*) FROM tbl_items");
+$totalItems = $totalItemsStmt->fetchColumn();
+$totalPages = ceil($totalItems / $itemsPerPage);
 ?>
 
 
@@ -40,7 +50,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
         <div class="cart-icons">
-          <a href="shopping_cart.php">
+          <a href="add_cart.html">
             <i class="fas fa-shopping-cart"></i>
           </a>
         </div>
@@ -128,6 +138,15 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
           }
           ?>
       </div>
+      <!-- Add this HTML code where you want to display the pagination -->
+<div class="pagination-container">
+    <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+        <a href="?page=<?= $i ?>" class="pagination-link <?php if ($i === $page) echo 'active'; ?>">
+            <?= $i ?>
+        </a>
+    <?php endfor; ?>
+</div>
+
     </main>
 
     <footer>
