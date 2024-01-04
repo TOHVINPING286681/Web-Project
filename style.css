@@ -364,8 +364,8 @@ header h1 {
   padding-bottom: 30px;
 }
 
-.wrapper-container {
-  height: 100%;
+.wrapper-container{
+    height: 100%;
 }
 
 .item {
@@ -413,7 +413,7 @@ footer {
   align-items: center;
 }
 
-.grid-item .editBtn {
+.grid-item .editBtn{
   width: 125px;
   background: transparent;
   color: #000000;
@@ -429,7 +429,7 @@ footer {
 
 .editBtn:hover {
   color: #ccc;
-}
+  }
 
 /* add_item.html */
 .body-add-item {
@@ -567,8 +567,7 @@ main {
   font-size: 20px;
 }
 
-.dropdownCategory {
-  /* Dropdown styles */
+.dropdownCategory {/* Dropdown styles */
   position: relative;
   display: inline-block;
 }
@@ -819,8 +818,7 @@ main {
   padding: 20px;
   text-align: center;
   border: 1px solid #ccc;
-  height: 350px;
-  max-height: 400px;
+  height: 100%;
 }
 
 .grid-item img {
@@ -857,6 +855,29 @@ main {
   margin: 10px auto 0;
 }
 
+/* Add this CSS code in your style.css file or within a style tag in the head of your HTML document */
+.pagination-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-link {
+  display: inline-block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #113946;
+  background-color: #BCA37F;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.pagination-link:hover,
+.pagination-link.active {
+  background-color: #113946;
+  color: #fff;
+}
+
+
 /* item_details.php */
 .cart-icons a {
   color: white;
@@ -883,10 +904,10 @@ body {
 }
 
 .item-details-pic {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 100%; /* Adjust the maximum width of the item details */
-  padding: 40px;
+display: flex;  
+justify-content: space-evenly;
+max-width: 100%; /* Adjust the maximum width of the item details */
+padding: 40px;
 }
 
 .pic-container {
@@ -907,7 +928,7 @@ body {
   margin: 0 auto; /* Center the image horizontally */
 }
 
-.item-details-namebutton {
+.item-details-namebutton{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -915,37 +936,37 @@ body {
   padding-right: 40px;
 }
 
-.item-details-desc {
-  gap: 40px;
+.item-details-desc{
+ gap: 40px;
 }
 
-.item-details-namebutton h2 {
+.item-details-namebutton h2{
   color: #113946;
   font-size: 65px;
   padding-bottom: 20px;
 }
 
-.item-details-desc p {
+.item-details-desc p{
   color: #000000;
   font-size: 35px;
   padding-bottom: 20px;
 }
 
 .add-to-cart-btn {
-  padding: 10px 20px;
-  background-color: #bca37f;
-  color: white;
-  border: none;
-  border-radius: 0;
-  font-size: 20px;
-  font-weight: 300;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  align-items: center;
+padding: 10px 20px;
+background-color: #BCA37F;
+color: white;
+border: none;
+border-radius: 0;
+font-size: 20px;
+font-weight: 300;
+cursor: pointer;
+transition: background-color 0.3s;
+align-items: center;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #ccc;
+background-color: #ccc;
 }
 
 /* edit_item.php */
@@ -1038,3 +1059,5 @@ body {
     justify-content: center;
   }
 }
+
+
