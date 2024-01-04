@@ -865,17 +865,17 @@ main {
   display: inline-block;
   padding: 8px 12px;
   text-decoration: none;
-  color: #113946;
-  background-color: #BCA37F;
+  color: #ccc;
+  background-color: transparent;
   border-radius: 5px;
   margin: 0 5px;
 }
 
 .pagination-link:hover,
 .pagination-link.active {
-  background-color: #113946;
-  color: #fff;
+  color: #113946;
 }
+
 
 
 /* item_details.php */
