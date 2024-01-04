@@ -1,22 +1,26 @@
 <?php
 include('dbconnect.php');
 
-$itemsPerPage = 12;
+$itemsPerPage = 30;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $itemsPerPage;
 
-// Fetch item name, price, category, and image path from the database
-$stmt = $pdo->prepare("SELECT item_name, item_id, item_price, item_category, image1_path FROM tbl_items LIMIT :offset, :itemsPerPage");
+// Fetch item name, price, category, and image path from the database with category filter
+$categoryFilter = isset($_GET['category']) ? $_GET['category'] : 'All';
+
+$stmt = $pdo->prepare("SELECT item_name, item_id, item_price, item_category, image1_path FROM tbl_items WHERE item_category = :category OR :category = 'All' LIMIT :offset, :itemsPerPage");
+$stmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 $stmt->bindParam(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$totalItemsStmt = $pdo->query("SELECT COUNT(*) FROM tbl_items");
+$totalItemsStmt = $pdo->prepare("SELECT COUNT(*) FROM tbl_items WHERE item_category = :category OR :category = 'All'");
+$totalItemsStmt->bindParam(':category', $categoryFilter, PDO::PARAM_STR);
+$totalItemsStmt->execute();
 $totalItems = $totalItemsStmt->fetchColumn();
 $totalPages = ceil($totalItems / $itemsPerPage);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +64,6 @@ $totalPages = ceil($totalItems / $itemsPerPage);
       <div class="leftContainer">
         <div class="filter">
           <h2 id="filter-heading">Filter</h2>
-
           <div class="categories">
             <ul class="filter-categories">
               <p id="categories">Categories</p>
@@ -139,13 +142,17 @@ $totalPages = ceil($totalItems / $itemsPerPage);
           ?>
       </div>
       <!-- Add this HTML code where you want to display the pagination -->
-<div class="pagination-container">
-    <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-        <a href="?page=<?= $i ?>" class="pagination-link <?php if ($i === $page) echo 'active'; ?>">
-            <?= $i ?>
-        </a>
-    <?php endfor; ?>
-</div>
+      <div class="pagination-container">
+        <?php
+        for ($i = 1; $i <= $totalPages; $i++) :
+            // Include the selected category as a parameter in the pagination links
+            $paginationLink = "?page=$i&category=$categoryFilter";
+        ?>
+            <a href="<?= $paginationLink ?>" class="pagination-link <?php if ($i === $page) echo 'active'; ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+    </div>
 
     </main>
 
@@ -207,7 +214,9 @@ $totalPages = ceil($totalItems / $itemsPerPage);
           
           if (category === 'All' || itemCategory === category) {
             item.style.display = 'block';
+            console.log(itemCategory)
           } else {
+            console.log(itemCategory);
             item.style.display = 'none';
           }
         });
