@@ -48,7 +48,7 @@ if (isset($_GET['item_id'])) {
         </div>
         <div class="cart">
           <div class="cart-icons">
-            <a href="add_cart.html">
+           <a href="shopping_cart.php">
                 <i class="fas fa-shopping-cart"></i>
             </a>
         </div>
