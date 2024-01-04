@@ -220,7 +220,7 @@ $totalPages = ceil($totalItems / $itemsPerPage);
           const [min, max] = priceRange.split('-').map((val, index) => index === 0 ? parseFloat(val.replace('RM', '')) : parseFloat(val.trim()));
           if (itemPrice >= min && itemPrice <= max) {
             item.style.display = 'block';
-          } else {
+          }else {
             item.style.display = 'none';
           }
         });
