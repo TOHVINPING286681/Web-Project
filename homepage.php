@@ -50,7 +50,7 @@ $totalPages = ceil($totalItems / $itemsPerPage);
           </div>
         </div>
         <div class="cart-icons">
-          <a href="add_cart.html">
+          <a href="shopping_cart.php">
             <i class="fas fa-shopping-cart"></i>
           </a>
         </div>
