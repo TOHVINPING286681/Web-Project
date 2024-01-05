@@ -247,6 +247,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 header h1 {
@@ -254,6 +255,10 @@ header h1 {
   font-size: 50px;
 }
 
+header img{
+  height:100px;
+   width:100px;
+}
 .logo-container {
   display: flex;
   justify-content: center;
@@ -856,6 +861,10 @@ main {
   margin: 10px auto 0;
 }
 
+.rightContainer{
+  background-color: #fff2d8;
+}
+
 /* Add this CSS code in your style.css file or within a style tag in the head of your HTML document */
 .pagination-container {
   margin-top: 20px;
@@ -1002,60 +1011,4 @@ body {
   width: 150px; /* Increase the width as needed */
   background-color: transparent;
   border: 1px transparent;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 990px) {
-  .container h1 {
-    font-size: 3rem;
-  }
-  .form-container.sign-up {
-    text-align: center;
-  }
-  .form-container.sign-up h1 {
-    font-size: xx-large;
-  }
-
-  .logo-container {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 670px) {
-  .container h1 {
-    font-size: 3rem;
-  }
-  .container button {
-    padding: 10px 35px;
-  }
-  .form-container.sign-up {
-    text-align: center;
-  }
-  .form-container.sign-up h1 {
-    font-size: xx-large;
-  }
-  .logo-container {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 500px) {
-  .container h1 {
-    font-size: xx-large;
-  }
-  .container button {
-    padding: 10px 35px;
-  }
-  .form-container.sign-up {
-    text-align: center;
-  }
-  .form-container.sign-up h1 {
-    font-size: xx-large;
-  }
-  .logo-container {
-    display: flex;
-    justify-content: center;
-  }
 }
