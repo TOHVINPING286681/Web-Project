@@ -54,25 +54,35 @@
       max-width: 100%;
     }
     header h1 {
-      font-size: 30px;
+      font-size: 25px;
     }
     header img{
-      height: 50px;
-      width: 50px;
+      height: 45px;
+      width: 45px;
     }
     .logo-container {
       margin: 0;
       display: flex;
       justify-content: center;
     }
+    .dropbtn p{
+        font-size: 14px;
+    }
     .filter-categories li,
     .price-range li{
     font-size: 10px;
+    }
+    .home-main{
+        gap: 10px;
     }
     .leftContainer {
     padding: 0px; /* Adjust padding as needed */
     padding-top: 10px;
     grid-template-columns: 0.2fr; 
+    }
+    .rightContainer{
+        padding-right: 3px;
+        margin: 0 auto;
     }
     .filter{
     margin-left: 5px;
