@@ -987,6 +987,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; /* Center items horizontally */
+  padding-bottom: 20px;
 }
 
 .ud-container .dlt-button {
