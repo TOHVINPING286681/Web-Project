@@ -1,0 +1,91 @@
+/* Media Queries for Responsive Design */
+@media (max-width: 990px) {
+    .container h1 {
+      font-size: 3rem;
+    }
+    .form-container.sign-up {
+      text-align: center;
+    }
+    .form-container.sign-up h1 {
+      font-size: xx-large;
+    }
+  
+    /* .logo-container {
+      display: flex;
+      justify-content: center;
+    } */
+  }
+  
+  @media (max-width: 670px) {
+    .container h1 {
+      font-size: 3rem;
+    }
+    .container button {
+      padding: 10px 35px;
+    }
+    .form-container.sign-up {
+      text-align: center;
+    }
+    .form-container.sign-up h1 {
+      font-size: xx-large;
+    }
+    /* .logo-container {
+      display: flex;
+      justify-content: center;
+    } */
+  }
+  
+  @media (max-width: 500px) {
+    /* index */
+    .container h1 {
+      font-size: xx-large;
+    }
+    .container button {
+      padding: 10px 35px;
+    }
+    .form-container.sign-up {
+      text-align: center;
+    }
+    .form-container.sign-up h1 {
+      font-size: xx-large;
+    }
+    /* homepage */
+    header {
+      max-width: 100%;
+    }
+    header h1 {
+      font-size: 30px;
+    }
+    header img{
+      height: 50px;
+      width: 50px;
+    }
+    .logo-container {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .filter-categories li,
+    .price-range li{
+    font-size: 10px;
+    }
+    .leftContainer {
+    padding: 0px; /* Adjust padding as needed */
+    padding-top: 10px;
+    grid-template-columns: 0.2fr; 
+    }
+    .filter{
+    margin-left: 5px;
+    }
+    .filter h2,
+    .categories p{
+        font-size: 14px;
+    }
+    .search-input{
+        flex: 0;
+    }
+    .grid-container{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+    padding: 0px;
+    }
+  }
