@@ -29,6 +29,7 @@ $totalPages = ceil($totalItems / $itemsPerPage);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TradeCycle - Homepage</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -38,7 +39,7 @@ $totalPages = ceil($totalItems / $itemsPerPage);
   <body>
     <header>
       <div class="logo-container">
-        <img src="icons/logo.svg" height="100" width="100" />
+        <img src="icons/logo.svg" alt="logo" />
         <h1>TradeCycle</h1>
       </div>
 
@@ -125,7 +126,7 @@ $totalPages = ceil($totalItems / $itemsPerPage);
       <div class="rightContainer">
         <div class="search-container">
           <input type="text" class="search-input" placeholder="Search..." />
-          <button class="search-button" type="button">
+          <button class="search-button" type="button" title="search">
             <i class="fas fa-search"></i>
           </button>
         </div>
