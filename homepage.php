@@ -191,6 +191,14 @@ $totalPages = ceil($totalItems / $itemsPerPage);
         });
       });
 
+      const lastPriceRangeElement = document.querySelector('.price-range li:last-of-type');
+        if (lastPriceRangeElement) {
+          console.log("Event listener added for RM1000++ filter");
+          lastPriceRangeElement.addEventListener('click', function () {
+            filterItemsByPriceOver1000();
+          });
+        }
+
       document.querySelector('.search-input').addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
           const searchTerm = document.querySelector('.search-input').value.trim();
@@ -235,6 +243,18 @@ $totalPages = ceil($totalItems / $itemsPerPage);
           }
         });
       }
+
+      function filterItemsByPriceOver1000() {
+  const items = document.querySelectorAll('.grid-item');
+  items.forEach((item) => {
+    const itemPrice = parseFloat(item.dataset.price);
+    if (!isNaN(itemPrice) && itemPrice >= 1000) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
 
       function filterItemsBySearch(searchTerm) {
         const items = document.querySelectorAll('.grid-item');
