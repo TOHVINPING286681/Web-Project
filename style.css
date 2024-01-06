@@ -667,8 +667,7 @@ main {
 }
 
 .item-table-container th:nth-child(1),
-.item-table-container th:nth-child(2),
-.item-table-container th:nth-child(3) {
+.item-table-container th:nth-child(2) {
   color: transparent;
 }
 
@@ -1074,6 +1073,23 @@ margin: 0;
   font-size: 3rem; /* Adjust the size as needed */
   color: #28a745; /* Green color for success */
   margin-bottom: 20px; /* Adjust spacing between icon and heading */
+}
+
+.redirect-link {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 40px; /* Adjust the top margin for spacing */
+}
+
+.redirect-link:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
 footer {
