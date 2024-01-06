@@ -46,7 +46,7 @@ $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <i class="fas fa-user"></i>
           </button>
           <div class="dropdown-content">
-            <a href="user_profile.php">Profile</a>
+            <a href="homepage.php">Back to Homepage</a>
             <a href="logout.php">Logout</a>
           </div>
         </div>
@@ -120,6 +120,23 @@ $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+      // Fetch the username using an AJAX request
+      fetch('profile.php')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.user_name) {
+            // Make sure to use the correct key here
+            // Update the username in the dropdown
+            document.querySelector('.username1').innerText = data.user_name;
+            document.querySelector('.username2').innerText = data.user_name;
+          } else {
+            console.error('Error fetching username:', data.error);
+          }
+        })
+        .catch((error) => console.error('Error fetching username:', error));
+    });
+    
             document.addEventListener('DOMContentLoaded', function () {
     var quantityButtons = document.querySelectorAll('.quantity-button button');
     quantityButtons.forEach(function (button, index) {
