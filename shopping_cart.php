@@ -189,26 +189,22 @@ function updateItemTotal(index, quantity) {
 }
 
 function deleteItem(cartId) {
-            if (confirm('Are you sure you want to delete this item from your cart?')) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            var row = document.querySelector('tr[data-cart-id="' + cartId + '"]');
-                            if (row) {
-                                row.remove();
-                                updateGrandTotal();
-                            }
-                        } else {
-                            console.error('Error:', xhr.status);
-                        }
-                    }
-                };
-                xhr.open('POST', 'delete_cart_item.php');
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.send('cart_id=' + cartId);
+    if (confirm('Are you sure you want to delete this item from your cart?')) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    location.reload(); // Reload the page after successful deletion
+                } else {
+                    console.error('Error:', xhr.status);
+                }
             }
-        }
+        };
+        xhr.open('POST', 'delete_cart_item.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('cart_id=' + cartId);
+    }
+}
 
 
 
