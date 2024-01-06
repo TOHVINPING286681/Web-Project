@@ -171,85 +171,84 @@
         <button type="submit" class="add-new-item-button">Add new item</button>
       </form>
     </main>
+  </body>
+  <footer>
+    <p>&copy; 2023 TradeCycle. All rights reserved.</p>
+  </footer>
 
-    <footer>
-      <p>&copy; 2023 TradeCycle. All rights reserved.</p>
-    </footer>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Fetch the username using an AJAX request
-        fetch('profile.php')
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.user_name) {
-              // Make sure to use the correct key here
-              // Update the username in the dropdown
-              document.querySelector('.username1').innerText = data.user_name;
-            } else {
-              console.error('Error fetching username:', data.error);
-            }
-          })
-          .catch((error) => console.error('Error fetching username:', error));
-      });
-
-      function previewImage(inputId, imageId) {
-        const input = document.getElementById(inputId);
-        const preview = document.getElementById(imageId);
-
-        if (input.files && input.files[0]) {
-          const reader = new FileReader();
-
-          reader.onload = function (e) {
-            // Resize the image before displaying
-            resizeImage(e.target.result, 250, 250, function (resizedDataUrl) {
-              preview.src = resizedDataUrl;
-              preview.style.display = 'block';
-            });
-          };
-
-          reader.readAsDataURL(input.files[0]);
-        }
-      }
-
-      function resizeImage(dataUrl, maxWidth, maxHeight, callback) {
-        const img = new Image();
-
-        img.onload = function () {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-
-          // Calculate the new dimensions maintaining the aspect ratio
-          let newWidth = img.width;
-          let newHeight = img.height;
-
-          if (newWidth > maxWidth) {
-            const ratio = maxWidth / newWidth;
-            newWidth = maxWidth;
-            newHeight *= ratio;
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fetch the username using an AJAX request
+      fetch('profile.php')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.user_name) {
+            // Make sure to use the correct key here
+            // Update the username in the dropdown
+            document.querySelector('.username1').innerText = data.user_name;
+          } else {
+            console.error('Error fetching username:', data.error);
           }
+        })
+        .catch((error) => console.error('Error fetching username:', error));
+    });
 
-          if (newHeight > maxHeight) {
-            const ratio = maxHeight / newHeight;
-            newHeight = maxHeight;
-            newWidth *= ratio;
-          }
+    function previewImage(inputId, imageId) {
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(imageId);
 
-          canvas.width = newWidth;
-          canvas.height = newHeight;
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
 
-          // Draw the image on the canvas
-          ctx.drawImage(img, 0, 0, newWidth, newHeight);
-
-          // Get the resized data URL
-          const resizedDataUrl = canvas.toDataURL('image/jpeg');
-
-          // Call the callback with the resized data URL
-          callback(resizedDataUrl);
+        reader.onload = function (e) {
+          // Resize the image before displaying
+          resizeImage(e.target.result, 250, 250, function (resizedDataUrl) {
+            preview.src = resizedDataUrl;
+            preview.style.display = 'block';
+          });
         };
 
-        img.src = dataUrl;
+        reader.readAsDataURL(input.files[0]);
       }
-    </script>
-  </body>
+    }
+
+    function resizeImage(dataUrl, maxWidth, maxHeight, callback) {
+      const img = new Image();
+
+      img.onload = function () {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Calculate the new dimensions maintaining the aspect ratio
+        let newWidth = img.width;
+        let newHeight = img.height;
+
+        if (newWidth > maxWidth) {
+          const ratio = maxWidth / newWidth;
+          newWidth = maxWidth;
+          newHeight *= ratio;
+        }
+
+        if (newHeight > maxHeight) {
+          const ratio = maxHeight / newHeight;
+          newHeight = maxHeight;
+          newWidth *= ratio;
+        }
+
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        // Draw the image on the canvas
+        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+        // Get the resized data URL
+        const resizedDataUrl = canvas.toDataURL('image/jpeg');
+
+        // Call the callback with the resized data URL
+        callback(resizedDataUrl);
+      };
+
+      img.src = dataUrl;
+    }
+  </script>
 </html>
