@@ -80,7 +80,6 @@ $items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
         ?>
         </div>
       </div>
-      
   <footer>
     <p>&copy; 2023 TradeCycle. All rights reserved.</p>
   </footer>
@@ -103,4 +102,5 @@ $items = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
     });
   </script>
 </body>
+
 </html>
