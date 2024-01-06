@@ -43,7 +43,7 @@ if (isset($_GET['item_id'])) {
             <i class="fas fa-user"></i>
           </button>
           <div class="dropdown-content">
-            <a href="user_profile.php">Profile</a>
+            <a href="homepage.php">Back to Homepage</a>
             <a href="logout.php">Logout</a>
           </div>
         </div>
